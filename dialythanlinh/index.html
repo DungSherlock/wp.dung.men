@@ -1,0 +1,5657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
+    <link href="https://cdn.jsdelivr.net/" rel="preconnect" crossorigin>
+    <link rel="dns-prefetch" href="https://res.cloudinary.com/">
+    <link href="https://res.cloudinary.com/" rel="preconnect" crossorigin>
+
+    <link rel="preload" as="style" href="/css-om/main.min.css" onload="this.rel='stylesheet'" />
+    <link rel="preload" as="script" href="/js-om/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js" onload="this.rel='javascript'" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bài 12: Địa lý thần linh – Hugo Zdoc Theme</title>
+    
+
+
+  
+  <script defer src="/js-om/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
+
+
+
+<script src="/js-om/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js-om/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
+
+<script defer src="/js-om/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+
+<script defer src="/js-om/helper/fadeinout.min.9fb19682560d5fa5596fffec85da605067c4acc86aad05add4d8fff9d362a446.js"></script>
+
+<script>
+  "use strict";
+
+  window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"https://i22.be/\"");
+    
+    var permalink = JSON.parse("\"https://i22.be/dialythanlinh/\"");
+
+    
+    var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
+    var tocBodyElem = document.querySelector('.toc__body');
+    var tocLabelElem = document.querySelector('.toc__label');
+    var listMainElem = document.getElementById('list-main');
+    var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
+    var sliderIcons = document.querySelectorAll('.slider__icon');
+
+    toggleSidebarElem ?
+      toggleSidebarElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (tocBodyElem) {
+            fadeIn(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeIn(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'm';
+            listSideElem.className = 'r';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (tocBodyElem) {
+            fadeOut(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeOut(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'mr';
+            listSideElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+    
+
+
+    
+    var navCollapseBtn = document.getElementById('navCollapseBtn');
+    navCollapseBtn ? navCollapseBtn.addEventListener('click', function(e) {
+      var navCollapse = document.querySelector('.navbar__collapse');
+      
+      if (navCollapse) {
+        var dataOpen = navCollapse.getAttribute('data-open');
+
+        if (dataOpen === 'true') {
+          navCollapse.setAttribute('data-open', 'false');
+          navCollapse.style.maxHeight = 0;
+        } else {
+          navCollapse.setAttribute('data-open', 'true');
+          navCollapse.style.maxHeight = navCollapse.scrollHeight + "px";
+        }
+      }
+    }) : null;
+    
+
+
+    
+    var expandBtn = document.querySelectorAll('.expand__button');
+
+    for (let i = 0; i < expandBtn.length; i++) {
+      expandBtn[i].addEventListener("click", function () {
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          this.querySelector('svg').classList.add('expand-icon__right');
+          this.querySelector('svg').classList.remove('expand-icon__down');
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          this.querySelector('svg').classList.remove('expand-icon__right');
+          this.querySelector('svg').classList.add('expand-icon__down');
+        }
+      });
+    }
+    
+
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+    
+    
+    
+    var enableDarkMode = JSON.parse("true");
+    var root = document.getElementById('root');
+    var toggleToLightBtn = document.getElementById('toggleToLight');
+    var toggleToDarkBtn = document.getElementById('toggleToDark');
+
+    if (!enableDarkMode) {
+      root.className = 'theme__light';
+      localStorage.setItem('theme', 'light');
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
+    }
+
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
+
+    
+    document.querySelectorAll('.menu__list').forEach(function(elem) {
+      if (elem.classList.contains('active')) {
+        elem.style.maxHeight = elem.scrollHeight + "px"; 
+      }
+    });
+    
+    document.querySelectorAll('.menu__title--collapse').forEach(function(elem) {
+      elem.addEventListener('click', function (e) {
+        var content = this.nextElementSibling;
+        var menuTitleIcon = this.querySelector('.menu__title--icon');
+        if (!content) {
+          return null;
+        }
+
+        var parent = elem.parentNode;
+        while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
+          parent.style.maxHeight = 100 * parent.children.length + "px";
+          parent = parent.parentNode;
+        }
+
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          content.classList.remove('active');
+          menuTitleIcon.classList.add('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.remove('downrtl');
+          } else {
+            menuTitleIcon.classList.remove('down');
+          }
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add('active');
+          menuTitleIcon.classList.remove('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.add('downrtl');
+          } else {
+            menuTitleIcon.classList.add('down');
+          }
+        }
+      });
+    });
+    
+
+
+    
+    var mobileLogo = document.getElementById('mobileLogo');
+    var modal = document.getElementById("myModal");
+    var drawer = document.getElementById('myDrawer');
+    var drawerCloseBtn = document.querySelector('.drawer__close');
+
+    var openDrawer = function() {
+      modal.style.opacity = 1;
+
+      if (languagedir === 'rtl') {
+        modal.style.right = 0;
+        drawer.style.right = 0;
+      } else {
+        modal.style.left = 0;
+        drawer.style.left = 0;
+      }
+    }
+
+    var closeDrawer = function() {
+      modal.style.opacity = 0;
+
+      if (languagedir === 'rtl') {
+        drawer.style.right = '-100%';
+      } else {
+        drawer.style.left = '-100%';
+      }
+
+      
+      setTimeout(function () {
+        if (languagedir === 'rtl') {
+          modal.style.right = '-100%';
+        } else {
+          modal.style.left = '-100%';
+        }
+      }, 250);
+    }
+
+    mobileLogo.onclick = function () {
+      openDrawer();
+      localStorage.setItem('isDrawerOpen', 'true');
+    }
+
+    modal.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+
+    drawerCloseBtn.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  
+
+
+  
+    var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var tocElem = document.querySelector('.toc');
+    var tableOfContentsElem = tocElem ? tocElem.querySelector('#TableOfContents') : null;
+    var singleContentsElem = document.querySelector('.single__contents');
+    var dataBGImgs = document.querySelectorAll('div[data-bgimg]');
+
+    
+    var tocLevels = JSON.parse("[\"h2\",\"h3\",\"h4\"]");
+
+    if (tocLevels) {
+      tocLevels = tocLevels.toString();
+    } else {
+      tocLevels = "h1, h2, h3, h4, h5, h6";
+    }
+
+    
+    var isLandingBgImg = JSON.parse("null");
+    
+    var isHome = JSON.parse("false");
+
+    function setNavbarBG(scrollTop) {
+      if (isHome && isLandingBgImg && Object.keys(isLandingBgImg).length) {
+        if (isLandingBgImg.height <= scrollTop) {
+          dataBGImgs.forEach(function(elem) {
+            elem.setAttribute('data-bgimg', 'false');
+          });
+        } else {
+          dataBGImgs.forEach(function (elem) {
+            elem.setAttribute('data-bgimg', 'true');
+          });
+        }
+      }
+    }
+    setNavbarBG(lastScrollTop);
+
+    window.onscroll = function () {
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      } else { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    };
+    
+
+
+
+    
+    var mobileSearchInputElem = document.querySelector('#search-mobile');
+    var mobileSearchClassElem = document.querySelector('.mobile-search');
+    var mobileSearchBtnElem = document.querySelector('#mobileSearchBtn');
+    var mobileSearchCloseBtnElem = document.querySelector('#search-mobile-close');
+    var mobileSearchContainer = document.querySelector('#search-mobile-container');
+    var mobileSearchResultsElem = document.querySelector('#search-mobile-results');
+    var htmlElem = document.querySelector('html');
+
+    if (mobileSearchClassElem) {
+      mobileSearchClassElem.style.display = 'none';
+    }
+
+    mobileSearchBtnElem ? 
+    mobileSearchBtnElem.addEventListener('click', function () {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'block';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.focus();
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'hidden';
+      }
+    }) : null;
+
+    mobileSearchCloseBtnElem ? 
+    mobileSearchCloseBtnElem.addEventListener('click', function() {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'none';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.value = '';
+      }
+      
+      if (mobileSearchResultsElem) {
+        while (mobileSearchResultsElem.firstChild) {
+          mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+        }
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'visible';
+      }
+    }) : null;
+
+    mobileSearchInputElem ? 
+    mobileSearchInputElem.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (mobileSearchContainer) {
+          mobileSearchContainer.style.display = 'none';
+        }
+        
+        if (mobileSearchInputElem) {
+          mobileSearchInputElem.value = '';
+        }
+
+        if (mobileSearchResultsElem) {
+          while (mobileSearchResultsElem.firstChild) {
+            mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+          }
+        }
+        if (htmlElem) {
+          htmlElem.style.overflowY = 'visible';
+        }
+      }
+    }) : null;
+  
+
+
+  
+    var localTheme = localStorage.getItem('theme');
+    var rootEleme = document.getElementById('root');
+    var selectThemeElem = document.querySelectorAll('.select-theme');
+    var selectThemeItemElem = document.querySelectorAll('.select-theme__item');
+    
+    if (localTheme) {
+      selectThemeItemElem ? 
+      selectThemeItemElem.forEach(function (elem) {
+        if (elem.text.trim() === localTheme) {
+          elem.classList.add('is-active');
+        } else {
+          elem.classList.remove('is-active');
+        }
+      }) : null;
+    }
+
+    selectThemeItemElem ? 
+    selectThemeItemElem.forEach(function (v, i) {
+      v.addEventListener('click', function (e) {
+        var selectedThemeVariant = e.target.text.trim();
+        localStorage.setItem('theme', selectedThemeVariant);
+
+        rootEleme.removeAttribute('class');
+        rootEleme.classList.add(`theme__${selectedThemeVariant}`);
+        selectThemeElem.forEach(function(rootElem) {
+          rootElem.querySelectorAll('a').forEach(function (elem) {
+            if (elem.classList) {
+              if (elem.text.trim() === selectedThemeVariant) {
+                if (!elem.classList.contains('is-active')) {
+                  elem.classList.add('is-active');
+                }
+              } else {
+                if (elem.classList.contains('is-active')) {
+                  elem.classList.remove('is-active');
+                }
+              }
+            }
+          });
+        });
+
+        if (window.mermaid) {
+          if (selectedThemeVariant === "dark" || selectedThemeVariant === "hacker") {
+            mermaid.initialize({ theme: 'dark' });
+            location.reload();
+          } else {
+            mermaid.initialize({ theme: 'default' });
+            location.reload();
+          }
+        }
+
+        var utterances = document.querySelector('iframe');
+        if (utterances) {
+          utterances.contentWindow.postMessage({
+            type: 'set-theme',
+            theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
+          }, 'https://utteranc.es');
+        }
+      });
+    }) : null;
+  
+
+
+  
+    
+    var langprefix = JSON.parse("\"\"");
+    var searchResults = null;
+    var searchMenu = null;
+    var searchText = null;
+    
+    
+    var enableSearchHighlight = JSON.parse("true");
+    
+    var enableSearch = JSON.parse("true");
+
+    var fuse = null;
+
+    if (enableSearch) {
+      (function initFuse() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', baseurl + langprefix + "/index-om.json");
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+              keys: ['title', 'description', 'content'],
+              includeMatches: enableSearchHighlight,
+              shouldSort: true,
+              threshold: 0.4,
+              location: 0,
+              distance: 100,
+              maxPatternLength: 32,
+              minMatchCharLength: 1,
+            });
+          }
+          else {
+            console.error(`[${xhr.status}]Error:`, xhr.statusText);
+          }
+        };
+        xhr.send();
+      })();
+    }
+    
+    function makeLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      
+      var a = document.createElement('a');
+      a.innerHTML = obj.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.permalink);
+
+      var descDiv = document.createElement('div');
+      descDiv.setAttribute('class', 'search-result__item--desc');
+      if (obj.description) {
+        descDiv.innerHTML = obj.description;
+      } else if (obj.content) {
+        descDiv.innerHTML = obj.content.substring(0, 80);
+      }
+      
+      li.appendChild(a);
+      li.appendChild(descDiv);
+      ulElem.appendChild(li);
+    }
+
+    function makeHighlightLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      var descDiv = null;
+
+      var a = document.createElement('a');
+      a.innerHTML = obj.item.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.item.uri);
+
+      if (obj.matches && obj.matches.length) {
+        for (var i = 0; i < obj.matches.length; i++) {
+          if ('title' === obj.matches[i].key) {
+            a = document.createElement('a');
+            a.innerHTML = generateHighlightedText(obj.matches[i].value, obj.matches[i].indices);
+            a.setAttribute('class', 'search-result__item--title');
+            a.setAttribute('href', obj.item.uri);
+          }
+          
+          if ('description' === obj.matches[i].key) {
+            descDiv = document.createElement('div');
+            descDiv.setAttribute('class', 'search-result__item--desc');
+            descDiv.innerHTML = generateHighlightedText(obj.item.description, obj.matches[i].indices);
+          } else if ('content' === obj.matches[i].key) {
+            if (!descDiv) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = generateHighlightedText(obj.item.content.substring(0, 80), obj.matches[i].indices);
+            }
+          } else {
+            if (obj.item.description) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.description;
+            } else {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.content.substring(0, 80);
+            }
+          }
+        }
+
+        li.appendChild(a);
+        if (descDiv) {
+          li.appendChild(descDiv);
+        }
+        if (li) {
+          ulElem.appendChild(li);
+        }
+      }
+    }
+
+    function renderSearchResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+      
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.setAttribute('href', result.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+
+          var descDiv = document.createElement('div');
+          descDiv.setAttribute('class', 'search-result__item--desc');
+          if (result.description) {
+            descDiv.innerHTML = result.description;
+          } else if (result.content) {
+            descDiv.innerHTML = result.content.substring(0, 80);
+          }
+
+          li.appendChild(titleDiv);
+          li.appendChild(descDiv);
+          ul.appendChild(a);
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchHighlightResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'search-result__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 80), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 80);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var content = document.createElement('div');
+      content.setAttribute('class', 'mobile-search__content');
+
+      if (results.length > 0) {
+        results.forEach(function (result) {
+          var item = document.createElement('a');
+          item.setAttribute('href', result.uri);
+          item.innerHTML = '<div class="mobile-search__item"><div class="mobile-search__item--title">📄 ' + result.title + '</div><div class="mobile-search__item--desc">' + (result.description ? result.description : result.content) + '</div></div>';
+          content.appendChild(item);
+        });
+      } else {
+        var item = document.createElement('span');
+        content.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(content);      
+    }
+
+    function renderSearchHighlightResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var ul = document.createElement('div');
+      ul.setAttribute('class', 'mobile-search__content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.appendChild(li);
+          li.setAttribute('class', 'mobile-search__item');
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'mobile-search__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'mobile-search__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 150), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 150);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var item = document.createElement('span');
+        ul.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(ul);
+    }
+
+    function generateHighlightedText(text, regions) {
+      if (!regions) {
+        return text;
+      }
+
+      var content = '', nextUnhighlightedRegionStartingIndex = 0;
+
+      regions.forEach(function(region) {
+        if (region[0] === region[1]) {
+          return null;
+        }
+        
+        content += '' +
+          text.substring(nextUnhighlightedRegionStartingIndex, region[0]) +
+          '<span class="search__highlight">' +
+            text.substring(region[0], region[1] + 1) +
+          '</span>' +
+        '';
+        nextUnhighlightedRegionStartingIndex = region[1] + 1;
+      });
+
+      content += text.substring(nextUnhighlightedRegionStartingIndex);
+
+      return content;
+    };
+
+    var searchElem = document.getElementById('search');
+    var searchMobile = document.getElementById('search-mobile');
+    var searchResultsContainer = document.getElementById('search-results');
+
+    searchElem ? 
+    searchElem.addEventListener('input', function(e) {
+      if (!e.target.value | window.innerWidth < 770) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('blur', function() {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('click', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      if (!e.target.value) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    var searchMenuElem = document.getElementById("search-menu");
+    var activeItem = document.querySelector('#search-menu .dd-item.is-active');
+    var activeIndex = null;
+    var items = null;
+    var searchContainerMaxHeight = 350;
+
+    searchElem ? 
+    searchElem.addEventListener('keydown', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+
+      var items = document.querySelectorAll('#search-menu .dd-item');
+      
+      if (e.key === 'ArrowDown') {
+        if (activeIndex === null) {
+          activeIndex = 0;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+        }
+        items[activeIndex].classList.add('is-active');
+
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel > 0) {
+          document.querySelector(".search-content").scrollTop += items[activeIndex].getBoundingClientRect().height;
+        } else if (activeIndex === 0) {
+          document.querySelector(".search-content").scrollTop = 0;
+        }
+      } else if (e.key === 'ArrowUp') {
+        if (activeIndex === null) {
+          activeIndex = items.length - 1;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+        }
+        items[activeIndex].classList.add('is-active');
+        
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel < 0) {
+          document.querySelector(".search-content").scrollTop -= items[activeIndex].getBoundingClientRect().height;
+        } else {
+          document.querySelector(".search-content").scrollTop = overflowedPixel + items[activeIndex].getBoundingClientRect().height;
+        }
+      } else if (e.key === 'Enter') {
+        var currentItemLink = items[activeIndex].getAttribute('href');
+        if (currentItemLink) {
+          location.href = currentItemLink;
+        }
+      } else if (e.key === 'Escape') {
+        e.target.value = null;
+        if (searchResults) {
+          searchResults.classList.remove('is-active');
+        }
+      }
+    }) : null;
+
+    searchMobile ? 
+    searchMobile.addEventListener('input', function(e) {
+      if (!e.target.value) {
+        let wrap = document.getElementById('search-mobile-results');
+        while (wrap.firstChild) {
+          wrap.removeChild(wrap.firstChild);
+        }
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+      
+      if (enableSearchHighlight) {
+        renderSearchHighlightResultsMobile(searchText, results);
+      } else {
+        renderSearchResultsMobile(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+  
+  }
+</script>
+    
+
+
+<link rel="stylesheet" href="/css-om/main.min.css">
+
+
+    <meta name="description" content="" />
+<meta name="keywords" content="">
+<meta name="created" content="1988-02-10T00:00:00&#43;0000">
+<meta name="modified" content="1988-02-10T00:00:00&#43;0000">
+
+
+<meta property="og:site_name" content="Hugo Zdoc Theme">
+<meta property="og:title" content="Bài 12: Địa lý thần linh">
+<meta property="og:url" content="https://i22.be/dialythanlinh/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.81.0" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://i22.be/dialythanlinh/">
+<link rel="manifest" href="/manifest.json">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57-om.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60-om.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72-om.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76-om.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114-om.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120-om.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144-om.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152-om.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180-om.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192-om.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-512x512-om.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32-om.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96-om.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16-om.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Bài 12: Địa lý thần linh",
+    "datePublished": "1988-02-10T00:00:00Z",
+    "dateModified": "1988-02-10T00:00:00Z",
+    "url" : "https://i22.be/dialythanlinh/",
+    "description": "Địa lý thần linh là gì “Địa lý Thần linh” đã có mặt trong dân gian từ ngàn xưa nhưng rất ít được biết đến. Đó là vì môn này mang tính cách \u0026ldquo;mật truyền\u0026rdquo; nên …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://i22.be/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hugo Zdoc Theme",
+      "url": "https://i22.be/"
+    }
+  }
+</script>
+
+    
+
+</head>
+
+
+<body id="root" class="theme__light">
+    <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"light\",\"dark\"]");
+        var localTheme = localStorage.getItem('theme');
+
+        if (localTheme) {
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
+    </script>
+    
+    <div id="container">
+        <div id="myDrawer" class="drawer" style="">
+  <div class="drawer__header">
+    <a href="/" class="drawer__header--text">
+      Trang chủ
+    </a>
+    <div class="grow"></div>
+    <div class="drawer__close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+    </div>
+  </div>
+
+  <div class="drawer__body">
+    <div class="menu">
+  <h6 class="menu__label">
+    
+      Bài 12: Địa lý thần linh
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://i22.be/om/tamlinh/">
+    <span class="menu__title--collapse-text">
+      Tâm Linh
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tamlinh/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/tamlinh/baihoccoban/">
+    <span class="menu__title--collapse-text">
+      Bài Học Cơ Bản
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/baihoccoban/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thankhauy/" class="menu__title " data-depth="1">Bài 1: Thân - Khẩu - Ý</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdiepcoivohinh/" class="menu__title " data-depth="1">Bài 2: Thông điệp từ cõi vô hình</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tiengnoila/" class="menu__title " data-depth="1">Bài 3: Tiếng nói lạ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuvuontamlinh/" class="menu__title " data-depth="1">Bài 4: Khu vườn tâm linh và các thuyết hiện hữu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdatcoivohinh/" class="menu__title " data-depth="1">Bài 5: Thông đạt với thế giới vô hình</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamthanmanhap/" class="menu__title " data-depth="1">Bài 6: Bệnh tâm thần hay ma nhập</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trucgiactamlinh/" class="menu__title " data-depth="1">Bài 7: Trực giác tâm linh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/diemdao/" class="menu__title " data-depth="1">Bài 8: Điểm đạo hay truyền ấn chứng</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/caunguyen/" class="menu__title " data-depth="1">Bài 9: Cầu Nguyện</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hieubiethuyenbi/" class="menu__title " data-depth="1">Bài 10: Hiểu biết huyền bí có ích lợi gì</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nghiencuuhuyenbi/" class="menu__title " data-depth="1">Bài 11: Tại sao nghiên cứu huyền bí</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dialythanlinh/" class="menu__title " data-depth="1">Bài 12: Địa lý thần linh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tauhoanhapma/" class="menu__title " data-depth="1">Bài 13: Tẩu hoả nhập ma</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luanhoi/" class="menu__title " data-depth="1">Bài 14: Sự cần thiết của luân hồi</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trieuhon/" class="menu__title " data-depth="1">Bài 15: Triệu hồn</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/honmabaooan/" class="menu__title " data-depth="1">Bài 16: Hồn ma báo oán</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngutinh/" class="menu__title " data-depth="1">Bài 17: Ngư tinh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cauchuyenlatma/" class="menu__title " data-depth="1">Bài 18: Câu chuyện về lạt ma DUGPAKUNLEG</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phuocduc/" class="menu__title " data-depth="1">Bài 19: Phước và Đức</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngungonphatgiao/" class="menu__title " data-depth="1">Bài 20: Câu chuyện ngụ ngôn phật giáo</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaicam/" class="menu__title " data-depth="1">Bài 21: Ngoại tâm lý, ngoại cảm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuvatnoigivoitoi/" class="menu__title " data-depth="1">Bài 22: Thú vật-Đã nói gì với tôi</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luatlevanghithuctrita/" class="menu__title " data-depth="1">Bài 23: Luật lệ và nghi thức trị tà</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/baodiemdangian/" class="menu__title " data-depth="1">Bài 24: Những hiện tượng báo điềm trong dân gian</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/tamlinh/hanhgia/">
+    <span class="menu__title--collapse-text">
+      Hành Giả
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/hanhgia/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cn/" class="menu__title " data-depth="1">Cầu Nguyện</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tichtruthanluc/" class="menu__title " data-depth="1">Tích trữ thần lực</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdiep/" class="menu__title " data-depth="0">Thông điệp dành cho những người hữu duyên</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://i22.be/om/ydao/">
+    <span class="menu__title--collapse-text">
+      Y Đạo
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/ydao/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/ydao/huyetluckhi/">
+    <span class="menu__title--collapse-text">
+      Huyệt Lục Khí
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/huyetluckhi/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tambao/">
+    <span class="menu__title--collapse-text">
+      Thủ Quyết Âm-Tâm Bào Lạc
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tambao/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctrach/" class="menu__title " data-depth="2">P3-Khúc Trạch-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khichmon/" class="menu__title " data-depth="2">P4-Khích Môn-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/giansu/" class="menu__title " data-depth="2">P5-Giản Sử-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/noiquan/" class="menu__title " data-depth="2">P6-Nội Quan-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dailang/" class="menu__title " data-depth="2">P7-Đại Lăng-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laocung/" class="menu__title " data-depth="2">P8-Lao Cung-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungxung/" class="menu__title " data-depth="2">P9-Trung Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/ty/">
+    <span class="menu__title--collapse-text">
+      Túc Thái Âm-Tỳ
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/ty/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/anbach/" class="menu__title " data-depth="2">SP1-Ẩn Bạch-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daido/" class="menu__title " data-depth="2">SP2-Đại Đô-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaibach/" class="menu__title " data-depth="2">SP3-Thái Bạch-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/congton/" class="menu__title " data-depth="2">SP4-Công Tôn-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuongkhau/" class="menu__title " data-depth="2">SP5-Thương Khâu-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamamgiao/" class="menu__title " data-depth="2">SP6-Tam Âm Giao</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laucoc/" class="menu__title " data-depth="2">SP7-Lậu Cốc</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/diaco/" class="menu__title " data-depth="2">SP8-Địa Cơ-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amlangtuyen/" class="menu__title " data-depth="2">SP9-Âm Lăng Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/vi/">
+    <span class="menu__title--collapse-text">
+      Túc Dưong Minh-Vị
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/vi/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thienxu/" class="menu__title " data-depth="2">ST25-Thiên Xu-Mộ huyệt của Đại Trường</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luongkhau/" class="menu__title " data-depth="2">ST34-Lương Khâu-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuctamly/" class="menu__title " data-depth="2">ST36-Túc Tam Lý-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dieukhau/" class="menu__title " data-depth="2">ST38-Điều Khẩu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phonglong/" class="menu__title " data-depth="2">ST40-Phong Long-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/giaikhe/" class="menu__title " data-depth="2">ST41-Giải Khê-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/xungduong/" class="menu__title " data-depth="2">ST42-Xung Dương-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hamcoc/" class="menu__title " data-depth="2">ST43-Hãm Cốc-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/noidinh/" class="menu__title " data-depth="2">ST44-Nội Đình-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ledoai/" class="menu__title " data-depth="2">ST45-Lệ Đoài-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tamtieu/">
+    <span class="menu__title--collapse-text">
+      Thủ Thiếu Dương-Tam Tiêu
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tamtieu/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quanxung/" class="menu__title " data-depth="2">TB1-Quan Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thientinh/" class="menu__title " data-depth="2">TB10-Thiên Tỉnh-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dichmon/" class="menu__title " data-depth="2">TB2-Dịch Môn-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungchu/" class="menu__title " data-depth="2">TB3-Trung Chữ-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongtri/" class="menu__title " data-depth="2">TB4-Dương Trì-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaiquan/" class="menu__title " data-depth="2">TB5-Ngoại Quan-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chicau/" class="menu__title " data-depth="2">TB6-Chi Cấu-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hoitong/" class="menu__title " data-depth="2">TB7-Hội Tông-Khích huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tieutruong/">
+    <span class="menu__title--collapse-text">
+      Thủ Thái Dương-Tiểu Trường
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tieutruong/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieutrach/" class="menu__title " data-depth="2">SI1-Thiếu Trạch-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tiencoc/" class="menu__title " data-depth="2">SI2-Tiền Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/haukhe/" class="menu__title " data-depth="2">SI3-Hậu Khê-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/uyencot/" class="menu__title " data-depth="2">SI4-Uyển Cốt-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongcoc/" class="menu__title " data-depth="2">SI5-Dương Cốc-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duonglao/" class="menu__title " data-depth="2">SI6-Dưỡng Lão-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chichanh/" class="menu__title " data-depth="2">SI7-Chi Chánh-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tieuhai/" class="menu__title " data-depth="2">SI8-Tiểu Hải-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/docmach/">
+    <span class="menu__title--collapse-text">
+      Đốc Mạch
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/docmach/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daichuy/" class="menu__title " data-depth="2">DU14-Đại Chùy</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/nhammach/">
+    <span class="menu__title--collapse-text">
+      Nhâm Mạch
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/nhammach/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungquan/" class="menu__title " data-depth="2">REN12-Trung Quản-Mộ huyệt của Vị</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cukhuyet/" class="menu__title " data-depth="2">REN14-Cự Khuyết-Mộ huyệt của Tâm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dantrung/" class="menu__title " data-depth="2">REN17-Đản Trung-Mộ huyệt của Tâm Bào</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungcuc/" class="menu__title " data-depth="2">REN3-Trung Cực-Mộ huyệt của Bàng Quang</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thachmon/" class="menu__title " data-depth="2">REN5-Thạch Môn-Mộ huyệt của Tam Tiêu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amgiao/" class="menu__title " data-depth="2">REN7-Âm Giao-Mộ huyệt của Tam Tiêu</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/daitruong/">
+    <span class="menu__title--collapse-text">
+      Thủ Dương Minh-Đại Trường
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/daitruong/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuongduong/" class="menu__title " data-depth="2">LI1-Thương Dương-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctri/" class="menu__title " data-depth="2">LI11-Khúc Trì-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhigian/" class="menu__title " data-depth="2">LI2-Nhị Gian-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamgian/" class="menu__title " data-depth="2">LI3-Tam Gian-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hopcoc/" class="menu__title " data-depth="2">LI4-Hợp Cốc-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongkhe/" class="menu__title " data-depth="2">LI5-Dương Khê-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thienlich/" class="menu__title " data-depth="2">LI6-Thiên Lịch-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/onluu/" class="menu__title " data-depth="2">LI7-Ôn Lưu-Khích huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tam/">
+    <span class="menu__title--collapse-text">
+      Thủ Thiếu Âm-Tâm
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tam/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuhai/" class="menu__title " data-depth="2">HE3-Thiếu Hải-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/linhdao/" class="menu__title " data-depth="2">HE4-Linh Đạo-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongly/" class="menu__title " data-depth="2">HE5-Thông Lý-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amkhich/" class="menu__title " data-depth="2">HE6-Âm Khích-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thanmon/" class="menu__title " data-depth="2">HE7-Thần Môn-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuphu/" class="menu__title " data-depth="2">HE8-Thiếu Phủ-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuxung/" class="menu__title " data-depth="2">HE9-Thiếu Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/phe/">
+    <span class="menu__title--collapse-text">
+      Thủ Thái Âm-Phế
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/phe/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungphu/" class="menu__title " data-depth="2">LU1-Trung Phủ-Mộ huyệt của Phế</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngute/" class="menu__title " data-depth="2">LU10-Ngư Tế-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuthuong/" class="menu__title " data-depth="2">LU11-Thiếu Thương-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/xichtrach/" class="menu__title " data-depth="2">LU5-Xích Trạch-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khongtoi/" class="menu__title " data-depth="2">LU6-Khổng Tối-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/lietkhuyet/" class="menu__title " data-depth="2">LU7-Liệt Khuyết-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhcu/" class="menu__title " data-depth="2">LU8-Kinh Cừ-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaiuyen/" class="menu__title " data-depth="2">LU9-Thái Uyên-Du huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/can/">
+    <span class="menu__title--collapse-text">
+      Túc Quyết Âm-Can
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/can/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daidon/" class="menu__title " data-depth="2">LIV1-Đại Đôn-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chuongmon/" class="menu__title " data-depth="2">LIV13-Chương Môn-Mộ huyệt của Tỳ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kymon/" class="menu__title " data-depth="2">LIV14-Kỳ Môn-Mộ huyệt của Can</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hanhgian/" class="menu__title " data-depth="2">LIV2-Hành Gian-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaixung/" class="menu__title " data-depth="2">LIV3-Thái Xung-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungphong/" class="menu__title " data-depth="2">LIV4-Trung Phong-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laicau/" class="menu__title " data-depth="2">LIV5-Lãi Câu-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chungdo/" class="menu__title " data-depth="2">LIV6-Chung Đô-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctuyen/" class="menu__title " data-depth="2">LIV8-Khúc Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/dom/">
+    <span class="menu__title--collapse-text">
+      Túc Thiếu Dương-Đởm
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/dom/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhatnguyet/" class="menu__title " data-depth="2">GB24-Nhật Nguyệt-Mộ huyệt của Đởm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhmon/" class="menu__title " data-depth="2">GB25-Kinh Môn-Mộ huyệt của Thận</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duonglangtuyen/" class="menu__title " data-depth="2">GB34-Dương Lăng Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaikhau/" class="menu__title " data-depth="2">GB36-Ngoại Khâu-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quangminh/" class="menu__title " data-depth="2">GB37-Quang Minh-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongphu/" class="menu__title " data-depth="2">GB38-Dương Phụ-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/huyenchung/" class="menu__title " data-depth="2">GB39-Huyền Chung</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khaukhu/" class="menu__title " data-depth="2">GB40-Khâu Khư-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuclamkhap/" class="menu__title " data-depth="2">GB41-Túc Lâm Khấp-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hiepkhe/" class="menu__title " data-depth="2">GB43-Hiệp Khê-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuckhieuam/" class="menu__title " data-depth="2">GB44-Túc Khiếu Âm-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/than/">
+    <span class="menu__title--collapse-text">
+      Túc Thiếu Âm-Thận
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/than/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dungtuyen/" class="menu__title " data-depth="2">KID1-Dũng Tuyền-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amcoc/" class="menu__title " data-depth="2">KID10-Âm Cốc-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhiencoc/" class="menu__title " data-depth="2">KID2-Nhiên Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaikhe/" class="menu__title " data-depth="2">KID3-Thái Khê-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daichung/" class="menu__title " data-depth="2">KID4-Đại Chung-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuytuyen/" class="menu__title " data-depth="2">KID5-Thủy Tuyền-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chieuhai/" class="menu__title " data-depth="2">KID6-Chiếu Hải</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phucluu/" class="menu__title " data-depth="2">KID7-Phục Lưu-Kinh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/bangquang/">
+    <span class="menu__title--collapse-text">
+      Túc Thái Dương-Bàng Quang
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/bangquang/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daitru/" class="menu__title " data-depth="2">BL11-Đại Trữ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cachdu/" class="menu__title " data-depth="2">BL17-Cách Du</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quannguyen/" class="menu__title " data-depth="2">BL26-Quan Nguyên-Mộ huyệt của Tiểu Trường</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/uytrung/" class="menu__title " data-depth="2">BL40-Ủy Trung-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phiduong/" class="menu__title " data-depth="2">BL58-Phi Dương-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/conlon/" class="menu__title " data-depth="2">BL60-Côn Lôn-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thanmach/" class="menu__title " data-depth="2">BL62-Thân Mạch</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kimmon/" class="menu__title " data-depth="2">BL63-Kim Môn-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhcot/" class="menu__title " data-depth="2">BL64-Kinh Cốt-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuccot/" class="menu__title " data-depth="2">BL65-Thúc Cốt-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongcoc/" class="menu__title " data-depth="2">BL66-Thông Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chiam/" class="menu__title " data-depth="2">BL67-Chí Âm-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/ydao/toacham/">
+    <span class="menu__title--collapse-text">
+      Toa Châm Lục Khí
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/toacham/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa3/" class="menu__title " data-depth="1">Bị cảm Can, Tam Tiêu, Mạch Sác, Hữu Quan phù, có sốt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa4/" class="menu__title " data-depth="1">Bị cảm, mạch hơi sác, Hữu Quan phù</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/botrungichkhi/" class="menu__title " data-depth="1">Bổ Trung Ích Khí</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa2/" class="menu__title " data-depth="1">Cảm nhức mỏi, bải hoải tay chân, bộ Hữu Quan trầm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaptoandaibo/" class="menu__title " data-depth="1">Thập Toàn Đại Bổ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa1/" class="menu__title " data-depth="1">Trị cảm nhức mỏi</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/mohuyet/" class="menu__title " data-depth="0">Nhóm Mộ Huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toacham/" class="menu__title " data-depth="0">Các toa châm</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+
+<script>
+  var menuTitle = document.querySelectorAll('.menu__title');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+
+  var closeDrawer = function () {
+    setTimeout(function () {
+      modal.style.opacity = 0;
+      drawer.style.left = '-100%';
+      modal.style.left = '-100%';
+    }, 250);
+  }
+
+  menuTitle ? 
+  menuTitle.forEach(function(elem) {
+    elem.onclick = function() {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  }) : null;
+</script>
+  </div>
+</div>
+<div id="myModal" class="modal" style=""></div>
+
+<script>
+  var isDrawerOpen = localStorage.getItem('isDrawerOpen');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+  
+  
+  var languagedir = JSON.parse("\"ltr\"");
+
+  var openDrawer = function () {
+    modal.style.opacity = 1;
+    
+    if (languagedir === "rtl") {
+      modal.style.right = 0;
+      drawer.style.right = 0;
+    } else {
+      modal.style.left = 0;
+      drawer.style.left = 0;
+    }
+  }
+
+  if (isDrawerOpen && isDrawerOpen === 'true') {
+    openDrawer();
+  }
+</script>
+        
+<nav class="nav">
+  <div class="navbar__wrapper" data-bgimg="false">
+    <div class="divider">
+      <div class="navbar lmr">
+        <div id="siteLogo" class="navbar__logo--wrapper">
+  
+    <a href="/" title="" rel="home" class="navbar__logo--link">
+      <img src="/logo-om.png" alt="Home" class="navbar__logo">
+    </a>
+  
+  
+    <a href="/" title="" rel="home" class="navbar__logo--text-link">
+      <h6 class="navbar__logo--text" data-bgimg="false">Trang chủ</h6>
+    </a>
+  
+</div>
+        
+        <div class="navbar__menu--wrapper">
+          <div id="tabletLogo" class="hide">
+  
+  <a href="/" rel="home" class="navbar__logo--link">
+    <img src="/logo-om.png" alt="Home" class="navbar__logo">
+  </a>
+  
+</div>
+          <div id="mobileLogo" class="hide">
+  <a href="#" class="navbar__logo--link">
+    <div class="navbar__icons--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/></svg>
+    </div>
+  </a>
+</div>
+          <span id="navMenuMobile" class="hide">
+  <button id="navCollapseBtn" class="navbar__dropdown--title" aria-label="Section Menu" data-dir="ltr">
+    
+      om
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg>
+  </button>
+  <div class="navbar__collapse" data-open="false">
+  <ul>
+    
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/" class="">Huệ Dũng</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item active">
+    <a href="/om" class="active">Tâm Y Dịch</a>
+  </li>
+
+  </ul>
+</div>
+</span>
+          <ul id="navMenu" class="navbar__menu">
+            
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/" data-bgimg="false">Huệ Dũng</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item active">
+    <a href="/om" data-bgimg="false">Tâm Y Dịch</a>
+  </li>
+
+          </ul>
+        </div>
+        <div class="grow"></div>
+        <div id="siteSearch">
+          
+
+<div class="search" data-bgimg="false">
+  <span class="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </span>
+  <input id="search" aria-label="Site Search" class="input" type="text" autocomplete="off" placeholder="Search">
+  <div id="search-results" class="dropdown">
+    <div id="search-menu" class="dropdown-menu">
+    </div>
+  </div>
+</div>
+
+
+        </div>
+        <div id="mobileSearch" class="hide">
+          
+<div id="mobileSearchBtn" class="mobile-search__btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+</div>
+
+<div id="search-mobile-container" class="mobile-search hide">
+  <div class="mobile-search__top">
+    <input id="search-mobile" type="text" aria-label="Mobile Search" placeholder="Search..." class="mobile-search__top--input"/>
+    <div id="search-mobile-close" class="mobile-search__top--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg>
+    </div>
+  </div>
+  <div id="search-mobile-results" class="mobile-search__body">
+    
+  </div>
+</div>
+
+        </div>
+        <div class="navbar__icons">
+  
+  
+<button id="toggleToDark" class="navbar__icons--icon" aria-label="Toggle to dark mode">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+</button>
+<button id="toggleToLight" class="navbar__icons--icon" aria-label="Toggle to light mode">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="currentColor" d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+</button>
+<script>
+  var theme = localStorage.getItem('theme');
+  var toggleToLightBtn = document.getElementById('toggleToLight');
+  var toggleToDarkBtn = document.getElementById('toggleToDark');
+
+  if (theme && theme === 'dark') {
+    toggleToLightBtn.className = 'navbar__icons--icon';
+    toggleToDarkBtn.className = 'hide';
+  } else {
+    toggleToLightBtn.className = 'hide';
+    toggleToDarkBtn.className = 'navbar__icons--icon';
+  }
+</script>
+
+  <div class="navbar__icons--icon">
+    <a href="https://github.com/DungSherlock" title="Github repository" aria-label="Github repository" target="_blank" rel="noreferrer">
+    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1 c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1 c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6c0-0.4,0-0.9,0.2-1.3 C7.2,6.1,7.4,6,7.5,6c0,0,0.1,0,0.1,0C8.1,6.1,9.1,6.4,10,7.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3c0.9-0.9,2-1.2,2.5-1.3 c0,0,0.1,0,0.1,0c0.2,0,0.3,0.1,0.4,0.3C17,6.7,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4 c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3C22,6.1,16.9,1.4,10.9,2.1z"/></svg>
+    </a>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  var siteLogo = document.getElementById('siteLogo');
+  var tabletLogo = document.getElementById('tabletLogo');
+  var mobileLogo = document.getElementById('mobileLogo');
+  var navMenu = document.getElementById('navMenu');
+  var navMenuMobile = document.getElementById('navMenuMobile');
+  var siteSearch = document.getElementById('siteSearch');
+  var mobileSearch = document.getElementById('mobileSearch');
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = '';
+      navMenu.className = 'hide';
+      navMenuMobile.className = '';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+  });
+</script>
+
+        
+  <div class="top">
+  <div class="header__wrapper bgcolor__header">
+    <div class="divider">
+      <div class="lmr">
+        <h2 class="title">Bài 12: Địa lý thần linh</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__wrapper bgcolor__breadcrumb">
+    <div class="divider">
+      <div class="lmr flexbox">
+        
+          <nav class="breadcrumb" aria-label="breadcrumbs" data-is-blog="false">
+  
+  <ol>
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li >
+    
+      <a href="https://i22.be/" class="capitalize">Z Themes</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="https://i22.be/om/" class="capitalize">Xin chào! Tôi là DŨNG!</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="https://i22.be/om/tamlinh/" class="capitalize">Tâm Linh</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="https://i22.be/om/tamlinh/baihoccoban/" class="capitalize">Bài Học Cơ Bản</a>
+    
+  </li>
+  
+  
+  <li  class="is-active" >
+    
+      <span>Bài 12: Địa lý thần linh</span>
+    
+  </li>
+  
+  </ol>
+  
+</nav>
+        
+        <div class="grow"></div>
+        
+  <label class="switch switch__rel">
+    
+      <input id="toggle-sidebar" aria-label="Toggle Sidebar Visibility" type="checkbox" checked />
+      <span class="slider">
+        <span class="slider__icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </span>
+        <span class="slider__icon hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </span>
+      </span>
+    
+    
+  </label>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+  
+
+<div class="mid">
+  <div class="divider">
+    
+    <nav id="single-menu" class="l" data-dir="ltr">
+      
+        <div class="menu">
+  <h6 class="menu__label">
+    
+      Bài 12: Địa lý thần linh
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://i22.be/om/tamlinh/">
+    <span class="menu__title--collapse-text">
+      Tâm Linh
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tamlinh/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/tamlinh/baihoccoban/">
+    <span class="menu__title--collapse-text">
+      Bài Học Cơ Bản
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/baihoccoban/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thankhauy/" class="menu__title " data-depth="1">Bài 1: Thân - Khẩu - Ý</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdiepcoivohinh/" class="menu__title " data-depth="1">Bài 2: Thông điệp từ cõi vô hình</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tiengnoila/" class="menu__title " data-depth="1">Bài 3: Tiếng nói lạ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuvuontamlinh/" class="menu__title " data-depth="1">Bài 4: Khu vườn tâm linh và các thuyết hiện hữu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdatcoivohinh/" class="menu__title " data-depth="1">Bài 5: Thông đạt với thế giới vô hình</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamthanmanhap/" class="menu__title " data-depth="1">Bài 6: Bệnh tâm thần hay ma nhập</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trucgiactamlinh/" class="menu__title " data-depth="1">Bài 7: Trực giác tâm linh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/diemdao/" class="menu__title " data-depth="1">Bài 8: Điểm đạo hay truyền ấn chứng</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/caunguyen/" class="menu__title " data-depth="1">Bài 9: Cầu Nguyện</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hieubiethuyenbi/" class="menu__title " data-depth="1">Bài 10: Hiểu biết huyền bí có ích lợi gì</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nghiencuuhuyenbi/" class="menu__title " data-depth="1">Bài 11: Tại sao nghiên cứu huyền bí</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dialythanlinh/" class="menu__title " data-depth="1">Bài 12: Địa lý thần linh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tauhoanhapma/" class="menu__title " data-depth="1">Bài 13: Tẩu hoả nhập ma</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luanhoi/" class="menu__title " data-depth="1">Bài 14: Sự cần thiết của luân hồi</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trieuhon/" class="menu__title " data-depth="1">Bài 15: Triệu hồn</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/honmabaooan/" class="menu__title " data-depth="1">Bài 16: Hồn ma báo oán</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngutinh/" class="menu__title " data-depth="1">Bài 17: Ngư tinh</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cauchuyenlatma/" class="menu__title " data-depth="1">Bài 18: Câu chuyện về lạt ma DUGPAKUNLEG</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phuocduc/" class="menu__title " data-depth="1">Bài 19: Phước và Đức</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngungonphatgiao/" class="menu__title " data-depth="1">Bài 20: Câu chuyện ngụ ngôn phật giáo</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaicam/" class="menu__title " data-depth="1">Bài 21: Ngoại tâm lý, ngoại cảm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuvatnoigivoitoi/" class="menu__title " data-depth="1">Bài 22: Thú vật-Đã nói gì với tôi</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luatlevanghithuctrita/" class="menu__title " data-depth="1">Bài 23: Luật lệ và nghi thức trị tà</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/baodiemdangian/" class="menu__title " data-depth="1">Bài 24: Những hiện tượng báo điềm trong dân gian</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/tamlinh/hanhgia/">
+    <span class="menu__title--collapse-text">
+      Hành Giả
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/hanhgia/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cn/" class="menu__title " data-depth="1">Cầu Nguyện</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tichtruthanluc/" class="menu__title " data-depth="1">Tích trữ thần lực</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongdiep/" class="menu__title " data-depth="0">Thông điệp dành cho những người hữu duyên</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://i22.be/om/ydao/">
+    <span class="menu__title--collapse-text">
+      Y Đạo
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/ydao/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/ydao/huyetluckhi/">
+    <span class="menu__title--collapse-text">
+      Huyệt Lục Khí
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/huyetluckhi/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tambao/">
+    <span class="menu__title--collapse-text">
+      Thủ Quyết Âm-Tâm Bào Lạc
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tambao/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctrach/" class="menu__title " data-depth="2">P3-Khúc Trạch-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khichmon/" class="menu__title " data-depth="2">P4-Khích Môn-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/giansu/" class="menu__title " data-depth="2">P5-Giản Sử-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/noiquan/" class="menu__title " data-depth="2">P6-Nội Quan-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dailang/" class="menu__title " data-depth="2">P7-Đại Lăng-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laocung/" class="menu__title " data-depth="2">P8-Lao Cung-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungxung/" class="menu__title " data-depth="2">P9-Trung Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/ty/">
+    <span class="menu__title--collapse-text">
+      Túc Thái Âm-Tỳ
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/ty/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/anbach/" class="menu__title " data-depth="2">SP1-Ẩn Bạch-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daido/" class="menu__title " data-depth="2">SP2-Đại Đô-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaibach/" class="menu__title " data-depth="2">SP3-Thái Bạch-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/congton/" class="menu__title " data-depth="2">SP4-Công Tôn-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuongkhau/" class="menu__title " data-depth="2">SP5-Thương Khâu-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamamgiao/" class="menu__title " data-depth="2">SP6-Tam Âm Giao</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laucoc/" class="menu__title " data-depth="2">SP7-Lậu Cốc</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/diaco/" class="menu__title " data-depth="2">SP8-Địa Cơ-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amlangtuyen/" class="menu__title " data-depth="2">SP9-Âm Lăng Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/vi/">
+    <span class="menu__title--collapse-text">
+      Túc Dưong Minh-Vị
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/vi/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thienxu/" class="menu__title " data-depth="2">ST25-Thiên Xu-Mộ huyệt của Đại Trường</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/luongkhau/" class="menu__title " data-depth="2">ST34-Lương Khâu-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuctamly/" class="menu__title " data-depth="2">ST36-Túc Tam Lý-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dieukhau/" class="menu__title " data-depth="2">ST38-Điều Khẩu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phonglong/" class="menu__title " data-depth="2">ST40-Phong Long-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/giaikhe/" class="menu__title " data-depth="2">ST41-Giải Khê-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/xungduong/" class="menu__title " data-depth="2">ST42-Xung Dương-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hamcoc/" class="menu__title " data-depth="2">ST43-Hãm Cốc-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/noidinh/" class="menu__title " data-depth="2">ST44-Nội Đình-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ledoai/" class="menu__title " data-depth="2">ST45-Lệ Đoài-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tamtieu/">
+    <span class="menu__title--collapse-text">
+      Thủ Thiếu Dương-Tam Tiêu
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tamtieu/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quanxung/" class="menu__title " data-depth="2">TB1-Quan Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thientinh/" class="menu__title " data-depth="2">TB10-Thiên Tỉnh-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dichmon/" class="menu__title " data-depth="2">TB2-Dịch Môn-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungchu/" class="menu__title " data-depth="2">TB3-Trung Chữ-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongtri/" class="menu__title " data-depth="2">TB4-Dương Trì-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaiquan/" class="menu__title " data-depth="2">TB5-Ngoại Quan-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chicau/" class="menu__title " data-depth="2">TB6-Chi Cấu-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hoitong/" class="menu__title " data-depth="2">TB7-Hội Tông-Khích huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tieutruong/">
+    <span class="menu__title--collapse-text">
+      Thủ Thái Dương-Tiểu Trường
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tieutruong/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieutrach/" class="menu__title " data-depth="2">SI1-Thiếu Trạch-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tiencoc/" class="menu__title " data-depth="2">SI2-Tiền Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/haukhe/" class="menu__title " data-depth="2">SI3-Hậu Khê-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/uyencot/" class="menu__title " data-depth="2">SI4-Uyển Cốt-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongcoc/" class="menu__title " data-depth="2">SI5-Dương Cốc-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duonglao/" class="menu__title " data-depth="2">SI6-Dưỡng Lão-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chichanh/" class="menu__title " data-depth="2">SI7-Chi Chánh-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tieuhai/" class="menu__title " data-depth="2">SI8-Tiểu Hải-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/docmach/">
+    <span class="menu__title--collapse-text">
+      Đốc Mạch
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/docmach/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daichuy/" class="menu__title " data-depth="2">DU14-Đại Chùy</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/nhammach/">
+    <span class="menu__title--collapse-text">
+      Nhâm Mạch
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/nhammach/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungquan/" class="menu__title " data-depth="2">REN12-Trung Quản-Mộ huyệt của Vị</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cukhuyet/" class="menu__title " data-depth="2">REN14-Cự Khuyết-Mộ huyệt của Tâm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dantrung/" class="menu__title " data-depth="2">REN17-Đản Trung-Mộ huyệt của Tâm Bào</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungcuc/" class="menu__title " data-depth="2">REN3-Trung Cực-Mộ huyệt của Bàng Quang</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thachmon/" class="menu__title " data-depth="2">REN5-Thạch Môn-Mộ huyệt của Tam Tiêu</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amgiao/" class="menu__title " data-depth="2">REN7-Âm Giao-Mộ huyệt của Tam Tiêu</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/daitruong/">
+    <span class="menu__title--collapse-text">
+      Thủ Dương Minh-Đại Trường
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/daitruong/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuongduong/" class="menu__title " data-depth="2">LI1-Thương Dương-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctri/" class="menu__title " data-depth="2">LI11-Khúc Trì-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhigian/" class="menu__title " data-depth="2">LI2-Nhị Gian-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tamgian/" class="menu__title " data-depth="2">LI3-Tam Gian-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hopcoc/" class="menu__title " data-depth="2">LI4-Hợp Cốc-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongkhe/" class="menu__title " data-depth="2">LI5-Dương Khê-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thienlich/" class="menu__title " data-depth="2">LI6-Thiên Lịch-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/onluu/" class="menu__title " data-depth="2">LI7-Ôn Lưu-Khích huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/tam/">
+    <span class="menu__title--collapse-text">
+      Thủ Thiếu Âm-Tâm
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/tam/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuhai/" class="menu__title " data-depth="2">HE3-Thiếu Hải-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/linhdao/" class="menu__title " data-depth="2">HE4-Linh Đạo-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongly/" class="menu__title " data-depth="2">HE5-Thông Lý-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amkhich/" class="menu__title " data-depth="2">HE6-Âm Khích-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thanmon/" class="menu__title " data-depth="2">HE7-Thần Môn-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuphu/" class="menu__title " data-depth="2">HE8-Thiếu Phủ-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuxung/" class="menu__title " data-depth="2">HE9-Thiếu Xung-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/phe/">
+    <span class="menu__title--collapse-text">
+      Thủ Thái Âm-Phế
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/phe/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungphu/" class="menu__title " data-depth="2">LU1-Trung Phủ-Mộ huyệt của Phế</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngute/" class="menu__title " data-depth="2">LU10-Ngư Tế-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thieuthuong/" class="menu__title " data-depth="2">LU11-Thiếu Thương-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/xichtrach/" class="menu__title " data-depth="2">LU5-Xích Trạch-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khongtoi/" class="menu__title " data-depth="2">LU6-Khổng Tối-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/lietkhuyet/" class="menu__title " data-depth="2">LU7-Liệt Khuyết-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhcu/" class="menu__title " data-depth="2">LU8-Kinh Cừ-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaiuyen/" class="menu__title " data-depth="2">LU9-Thái Uyên-Du huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/can/">
+    <span class="menu__title--collapse-text">
+      Túc Quyết Âm-Can
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/can/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daidon/" class="menu__title " data-depth="2">LIV1-Đại Đôn-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chuongmon/" class="menu__title " data-depth="2">LIV13-Chương Môn-Mộ huyệt của Tỳ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kymon/" class="menu__title " data-depth="2">LIV14-Kỳ Môn-Mộ huyệt của Can</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hanhgian/" class="menu__title " data-depth="2">LIV2-Hành Gian-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaixung/" class="menu__title " data-depth="2">LIV3-Thái Xung-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/trungphong/" class="menu__title " data-depth="2">LIV4-Trung Phong-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/laicau/" class="menu__title " data-depth="2">LIV5-Lãi Câu-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chungdo/" class="menu__title " data-depth="2">LIV6-Chung Đô-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khuctuyen/" class="menu__title " data-depth="2">LIV8-Khúc Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/dom/">
+    <span class="menu__title--collapse-text">
+      Túc Thiếu Dương-Đởm
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/dom/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhatnguyet/" class="menu__title " data-depth="2">GB24-Nhật Nguyệt-Mộ huyệt của Đởm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhmon/" class="menu__title " data-depth="2">GB25-Kinh Môn-Mộ huyệt của Thận</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duonglangtuyen/" class="menu__title " data-depth="2">GB34-Dương Lăng Tuyền-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/ngoaikhau/" class="menu__title " data-depth="2">GB36-Ngoại Khâu-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quangminh/" class="menu__title " data-depth="2">GB37-Quang Minh-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/duongphu/" class="menu__title " data-depth="2">GB38-Dương Phụ-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/huyenchung/" class="menu__title " data-depth="2">GB39-Huyền Chung</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/khaukhu/" class="menu__title " data-depth="2">GB40-Khâu Khư-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuclamkhap/" class="menu__title " data-depth="2">GB41-Túc Lâm Khấp-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/hiepkhe/" class="menu__title " data-depth="2">GB43-Hiệp Khê-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/tuckhieuam/" class="menu__title " data-depth="2">GB44-Túc Khiếu Âm-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/than/">
+    <span class="menu__title--collapse-text">
+      Túc Thiếu Âm-Thận
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/than/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/dungtuyen/" class="menu__title " data-depth="2">KID1-Dũng Tuyền-Tĩnh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/amcoc/" class="menu__title " data-depth="2">KID10-Âm Cốc-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/nhiencoc/" class="menu__title " data-depth="2">KID2-Nhiên Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaikhe/" class="menu__title " data-depth="2">KID3-Thái Khê-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daichung/" class="menu__title " data-depth="2">KID4-Đại Chung-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuytuyen/" class="menu__title " data-depth="2">KID5-Thủy Tuyền-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chieuhai/" class="menu__title " data-depth="2">KID6-Chiếu Hải</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phucluu/" class="menu__title " data-depth="2">KID7-Phục Lưu-Kinh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="2" data-permalink="https://i22.be/om/ydao/huyetluckhi/bangquang/">
+    <span class="menu__title--collapse-text">
+      Túc Thái Dương-Bàng Quang
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/bangquang/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/daitru/" class="menu__title " data-depth="2">BL11-Đại Trữ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/cachdu/" class="menu__title " data-depth="2">BL17-Cách Du</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/quannguyen/" class="menu__title " data-depth="2">BL26-Quan Nguyên-Mộ huyệt của Tiểu Trường</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/uytrung/" class="menu__title " data-depth="2">BL40-Ủy Trung-Hợp huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/phiduong/" class="menu__title " data-depth="2">BL58-Phi Dương-Lạc huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/conlon/" class="menu__title " data-depth="2">BL60-Côn Lôn-Kinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thanmach/" class="menu__title " data-depth="2">BL62-Thân Mạch</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kimmon/" class="menu__title " data-depth="2">BL63-Kim Môn-Khích huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/kinhcot/" class="menu__title " data-depth="2">BL64-Kinh Cốt-Nguyên huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thuccot/" class="menu__title " data-depth="2">BL65-Thúc Cốt-Du huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thongcoc/" class="menu__title " data-depth="2">BL66-Thông Cốc-Vinh huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/chiam/" class="menu__title " data-depth="2">BL67-Chí Âm-Tĩnh huyệt</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="1" data-permalink="https://i22.be/om/ydao/toacham/">
+    <span class="menu__title--collapse-text">
+      Toa Châm Lục Khí
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/toacham/ data-link=https://i22.be/dialythanlinh/>
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa3/" class="menu__title " data-depth="1">Bị cảm Can, Tam Tiêu, Mạch Sác, Hữu Quan phù, có sốt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa4/" class="menu__title " data-depth="1">Bị cảm, mạch hơi sác, Hữu Quan phù</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/botrungichkhi/" class="menu__title " data-depth="1">Bổ Trung Ích Khí</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa2/" class="menu__title " data-depth="1">Cảm nhức mỏi, bải hoải tay chân, bộ Hữu Quan trầm</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/thaptoandaibo/" class="menu__title " data-depth="1">Thập Toàn Đại Bổ</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toa1/" class="menu__title " data-depth="1">Trị cảm nhức mỏi</a>
+        </li>
+      
+    
+  </ul>
+  
+
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/mohuyet/" class="menu__title " data-depth="0">Nhóm Mộ Huyệt</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://i22.be/toacham/" class="menu__title " data-depth="0">Các toa châm</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+      
+    </nav>
+
+    <article id="list-main" class="m" data-dir="ltr">
+      <div class="single" data-display="block">
+  
+
+  <article class="single__contents" data-dir="ltr">
+    <h2 id="địa-lý-thần-linh-là-gì">Địa lý thần linh là gì</h2>
+<p>“Địa lý Thần linh” đã có mặt trong dân gian từ ngàn xưa nhưng rất ít được biết đến. Đó là vì môn này mang tính cách &ldquo;mật truyền&rdquo; nên không hề được ghi chép và phổ biến rộng rãi như khoa &ldquo;Phong thủy&rdquo;. Thêm vào đó, bộ môn được thực hành bằng những nghi thức rời rạc, vụn vặt không có hệ thống cũng như nguồn gốc rõ ràng. Ví dụ, muốn ngăn chặn tác hại của dòn dông thì dùng kính bát quái, muốn cơ sở làm ăn phát đạt thì thỉnh phép Tài lộc, để tránh tai biến trong gia đạo thì nương tựa phép &ldquo;bình an&rdquo;, nhà cửa bị phần âm quấy phá tất phải nhờ đến phép trấn ếm… Cúng đất đai thổ trạch, cúng cô hồn, lập bàn thờ thần tài cũng nằm trong trong môn &ldquo;Địa lý thần linh&rdquo;. Như vậy, trong khi môn phong thủy chuyên sắp xếp vật thể theo phương hướng thuận lợi, thì môn &ldquo;Địa lý thần linh&rdquo; đặt nền tảng trên sự hộ độ của quyền lực siêu nhiên. Phần thực hành tuy có khác, nhưng cả hai bộ môn đều nhằm mục tiêu chung, là mang lại phúc lợi cho cuộc sống.<br />
+Bộ môn &ldquo;Địa lý thần linh&rdquo; là tổng hợp của những nghi thức cầu Thần Linh nói trên, đã được Hội Tâm Linh Học nghiên cứu và hệ thống hóa trong nhiều năm qua. Với sự hộ độ của thần linh, mọi khó khăn trong đời sống chắc chắn sẽ được khắc phục, cho dù nhà cửa hay cơ sở thương mại của chúng ta đang ở vào một vị thế bất lợi. Ngay cả khoa &ldquo;Phong thủy&rdquo; cũng cho thấy, cuộc đất tốt hay phương vị chưa hẳn là yếu tố quyết định cho sự phát đạt. Điều này được biểu lộ qua câu :</p>
+<p>&ldquo;Tiên tích Đức, hậu tầm long&rdquo; có nghĩa là, trước hết là phải tích đức, sau đó mới mong tìm được long mạch!</p>
+<p>Từ đó suy ra, chúng ta đi đến kết luận rằng phương vị có thanh long, bạch hổ, minh đường, chu tước. huyền vũ v.v… chỉ là hư cấu vì mọi phúc lợi bắt nguồn từ phước đức. Môn Địa lý Thần linh quan niệm, có phước đức mới đạt được sự trợ giúp của thần thánh, cho nên bên cạnh những nghi lễ đạo đạt thỉnh cầu lên Ơn Trên, gia chủ còn được hướng dẫn cách lập công bồi đức, để nguyện ước của họ chóng được thành tựu.<br />
+Căn bản của bộ môn dựa trên sự hộ độ của các đấng linh thiêng, cho nên, Ấn, Chú và Linh phù là những nghi thức chánh, được dùng để tiếp nhận thông điệp từ cõi vô hình. Ngang đây thiết tưởng cũng nên giải thích sơ qua về những nghi thức này, nhằm giúp mọi người được an tâm hơn khi đến với những bộ môn huyền bí. Mỗi đạo ấn đều có tác dụng và ý nghĩa riêng biệt, được nhà huyền bí dùng để thông đạt với thần linh, như kiết ấn đảnh lễ, hoặc kêu gọi trợ giúp khi hữu sự trong những trường hợp trừ tà, trị bệnh chẳng hạn Ngược lại chư vị cũng thị hiện bằng tay ấn quatrung gian đồng tử. Nhìn vào tay ấn, nhà huyền bí có thể biết được danh hiệu của đấng vô hình cũng như mục đích giáng lâm. Hình tượng của thần linh cũng như của các đấng giáo chủ thường được thấy trong tư thế kiết ấn. Có hàng trăm đạo ấn khác nhau, mỗi tay ấn đều có tên như, Ấn Kim Cang, Ấn Đại Nhựt, ấn Chuẩn đề, ấn Liên Hoa, Như Lai Thiện tâm ấn v.v….<br />
+Theo kinh sách, câu chú là lời tuyên hứa của chư bồ tát. Thông thường là những lời hứa ban phương tiện cứu độ mồi khi có chúng sanh hướng về các Ngài bằng cách trì tụng câu chú liên hệ. Do đó câu chú được xem như một quy ước cho nên thường dùng để kêu gọi sự chứng giám của chư vị trong lúc công phu tu tập hoặc khi thực hành những bộ môn giúp đời có tính cách huyền bí. Câu chú &ldquo;Om Mani Pad Mê Hum&rdquo;, được trì tụng nhiều nhất ở Tây tạng và nổi tiếng khắp nơi. Lời chú thường ít khi mang ý nghĩa và mỗi câu chú có tác dụng riêng tùy theo lời hứa ban phát phương tiện của chư vị.<br />
+Đi theo Ấn, Chú còn có Linh phù hay lá phép. Linh phù còn được hành giả trong giới tu tập huyền bí gọi là &ldquo;lá thiên thư&rdquo;, một bức thư gửi cho cõi trời. Danh xưng này diễn tả được ý nghĩa của linh phù hay &ldquo;lá bùa&rdquo; theo cách gọi nôm na của giới bình dân. Lá thư được vẽ bằng những nét ngoằn ngoèo, là những ký hiệu mang ý nghĩa tùy theo quy ước giữa nhà huyền bí và cõi vô hình. Mỗi linh phù đều có tên gọi như, phép hộ thân, phép may mắn, phép tài lộc v.v… Nói tóm lại Linh Phù, Chú và Ấn là những biểu hiện cho mối liên lạc bí mật giữa người làm huyền bí và chư vị trong cõi vô hình. Chính vì vậy, mà những nghi thức này thể hiện bằng những ký hiệu khó hiểu cho những người ngoại cuộc.<br />
+Những nghi thức bí truyền của môn Địa lý thần linh rất hữu hiệu trong việc giải tỏa những xạ tuyến xấu, và những vùng nặng nề âm khí trong nhà hay cơ sở. Xạ tuyến là những làn sóng rung động do các vật thể phát ra, có khi thích hợp với từng cá nhân riêng biệt như màu sắc, hoặc không thích hợp cho mọi người, như xạ tuyến của đòn dông đâm thẳng vào cửa chánh. Những xạ tuyến xấu và những nơi có âm khí thường mang lại bệnh tật, cũng như xui xẻo cho những người cư ngụ trong nhà. Đặc biệt là những nghi thức này có thể giúp cho gia chủ trở nên nhạy cảm, để tự bản thân tiếp nhận những tầng rung động hết sức vi tế nói trên. Đây cũng là dịp để chứng nghiệm một hiện tượng vượt ngoài tầm giải thích của khoa học. Ngoài việc phát hiện ra những nơi hãm Địa và giúp gia chủ kiểm nghiệm, nhà Địa lý còn khám phá được những khó khăn trong gia cảnh như tiền tài, sức khỏe, hạnh phúc… mặc dầu những điều này chưa hề được thổ lộ. Những khó khăn đó cũng sẽ được giải tỏa bằng những phương tiện huyền bí của bộ môn. Kết quả có thể thấy ngay như việc xóa tan những nơi có xạ tuyến xấu hay những nơi bị ảnh hưởng của phần âm. Còn những vấn đề lớn hơn cần phải có thời gian để khắc phục, chậm hay nhanh còn tùy theo mức độ thực hiện những lời hướng dẫn của thần linh qua trung gian người làm Địa lý.<br />
+Như đã trình bày trên đây thì đến với khoa Địa lý Thần Linh không những đạt đuợc mọi phúc lợi vật chất mà còn là một cơ duyên chứng nghiệm về sự hiện hữu của thế giới linh thiêng. Sự chứng nghiệm này chắc chắn sẽ mang lại một giá trị tinh thần lớn lao cho sự tiến hóa tâm linh.<br />
+Trong nhiều năm trước, tầm hoạt động của &ldquo;Địa lý thần linh&rdquo; hãy còn hết sức giới hạn, vì chúng tôi chỉ nhận giúp đỡ qua lời giới thiệu. Nhưng trong những năm gần đây, Môn &ldquo;Địa lý Thần Linh&rdquo; đã mang lại nhiều thành quả hết sức khích lệ, nên chúng tôi mạnh dạn giới thiệu môn này. Đến với Địa lý thần linh là một cơ duyên để chứng nghiệm sự hiện hữu của thế giới siêu hình, vì đây là một bộ môn huyền bí thực tiễn.<br />
+Mục đích của chúng tôi, là dùng khả năng và kiến thức về siêu hình, để tùy duyên giúp đỡ cho quí vị qua được những khó khăn trong cuộc sống. Nếu môn Phong thủy cho rằng &ldquo;tiên tích đức hậu tầm long&rdquo;, thì môn Địa lý thần linh chủ trương: &ldquo;Có Đức mặc sức mà ăn&rdquo; theo lời truyền tụng của dân gian. Như vậy giúp đỡ cho quí vị tức là giúp đỡ cho chính bản thân của chúng tôi, trên phương diện công đức.</p>
+<h2 id="hỏi-đáp-địa-lý-thần-linh">Hỏi Đáp Địa Lý Thần Linh</h2>
+<h3 id="1-phải-có-điều-kiện-gì-để-được-xem-đltl">1. Phải có điều kiện gì để được xem ĐLTL?</h3>
+<p>Đây là câu hỏi liên quan đến điều kiện tiên quyết để xem Địa lý Thần Linh. Nhà làm địa lý chỉ nhận giúp đỡ do chính chủ nhân căn nhà hay của cơ sở thương mãi yêu cầu. Nếu là vợ chồng thì phải có sự đồng ý của hai người, còn cơ sở thì cần sự tham dự của tất cả những người hùn hạp nếu có. Điều này đối với môn Địa lý Thần Linh thật quan trọng vì nó bày tỏ được lòng thành của người muốn được chư vị hộ độ. Nếu không có sự tham dự đầy đủ của tất cả những người liên hệ thì những nghi thức của môn Địa lý khó lòng mang lại sự linh ứng vì không được cõi vô hình chứng giám.</p>
+<h3 id="2-xin-giải-thích-thêm-về-xạ-tuyến-xấu-và-xạ-tuyến-tốt-nghĩa-là-gì">2. Xin giải thích thêm về xạ tuyến xấu và xạ tuyến tốt, nghĩa là gì?</h3>
+<p>Dùng chữ xạ tuyến để chỉ những tần số rung động phát ra từ các vật thể. Những làn sóng này có thể tạo ra những xạ tuyến xấu hoặc tốt. Xấu vì nó tác hại đến mọi người như xạ tuyến của cây đòn dông mà ai cũng biết, cũng có khi xấu với người này nhưng hạp với người khác như màu sắc chẳng hạn. Những xạ tuyến khác nhau tạo nên những vùng xấu hoặc tốt trong căn nhà hay cơ sở mà môn phong thủy gọi là hãm địa hay vượng địa.<br />
+Nhưng môn Phong thủy chủ về khí nên cho rằng hãm hay vượng là do ảnh hưởng của địa khí thay vì xạ tuyến. Môn địa lý thần linh có phương pháp giúp thân chủ trở nên nhạy cảm hơn để có thể tự bản thân cảm giác được những xạ tuyến tốt hay xấu nói trên mặc dầu đây là những làn sóng hết sức vi tế. Khoa địa lý thần linh là một bộ môn tuy nặng phần huyền bí nhưng lại rất thực tiễn là vì thân chủ có thể kiểm nghiệm những gì chúng tôi làm thay vì chỉ tin vào lời nói. Thật vậy, chứng nghiệm có xạ tuyến chỉ là một trong nhiều hiện tượng khác do khoa địa lý thần linh mang đến. Xạ Tuyến xấu gọi là ác xạ. Nơi nào có ác xạ xuất hiện, nơi đó trở thành hãm địa, là mầm mống cho nhiều chuyện không hay xảy đến cho gia đình hay công việc làm ăn của quí vị. Đây là những nơi mà nhà địa lý sẽ dùng những phương pháp bí truyền để giải tỏa trong khoảnh khắc.</p>
+<h3 id="3-xin-cho-biết-nếu-có-người-có-cơ-sở-làm-ăn-thua-lỗ-có-giúp-được-không">3. Xin cho biết, nếu có người có cơ sở làm ăn thua lỗ, có giúp được không?</h3>
+<p>Đây là sở trường của khoa Địa lý thần linh. Tài lộc là một trong nhiều phúc lợi mà khoa này mang đến cho thân chủ. Nhà địa lý sẽ khảo sát cơ sở của thân chủ để tìm nguyên nhân như xạ tuyến xấu, bị ảnh hưởng phần âm, bị kẻ thù ếm đối để sau đó dùng những phương tiện của khoa địa lý mà giải trừ. Ngoài ra nhà địa lý cũng hướng dẫn thân chủ của mình cách thức xin chư vị hộ độ để được may mắn hơn trong sự nghiệp. Quí vị cần may mắn, cần cơ hội tốt để có thể hưởng trọn vẹn tài lộc do khả năng của mình làm ra vì trên đời không thiếu gì những người tài giỏi mà vẫn phải thất bại. Thời cơ là do thần thánh mang đến chứ không hề do sức của con người, cho nên cổ nhân có câu: &ldquo;Mưu sự tại nhân, thành sự tại thiên&rdquo;, cho thấy con người có thể mưu tính làm bất cứ điều gì nhưng kết quả có hay không là do trời định đoạt. Muốn được thần thánh ban phát cơ hội phát triển công việc làm ăn thì ít ra chúng ta cũng phải có khả năng. Ví dụ một người không rành nấu ăn mà mở nhà hàng thì chắc khó mà xin được may mắn để đắt hàng vì không lẽ thần tài, thổ địa đưa khách đến để cho họ phải chịu thiệt thòi? Trong trường hợp gặp những thân chủ như thế này thì nhà địa lý thường khuyên họ nên đổi nghề khác thích hợp hơn và chỉ có thể giúp họ bán hoặc sang nhượng cơ sở một cách nhanh chóng mà thôi.</p>
+<h3 id="4-mục-đích-của-đltl-là-gì">4. Mục đích của ĐLTL là gì?</h3>
+<p>Như vừa trình bày trước đây, môn Địa lý Thần Linh giúp người có một cuộc sống hanh thông hơn trên nhiều phương diện như tiền tài, gia đạo, sức khỏe … bằng cách chỉnh đốn môi trường họ đang sanh sống hay làm việc. Về phương diện tinh thần, môn ĐLTL còn giúp cho thân chủ của mình chứng nghiệm nhiều hiện tượng huyền bí để từ đó tiến hóa tâm linh.</p>
+<h3 id="5-gọi-là-địa-lý-thần-linh-vậy-thần-linh-đó-là-ai">5. Gọi là Địa Lý Thần Linh, vậy thần linh đó là ai?</h3>
+<p>Theo môn Địa lý Thần linh quan niệm thì cõi vô hình là cõi hằng hữu, dĩ nhiên có trước khi con người biết đến qua tôn giáo. Thần Linh là chữ nói tắt của &ldquo;thần thánh linh thiêng&rdquo; dùng để chỉ các đấng trong cõi này, Ơn Trên, Bề Trên, Thiêng Liêng hay Chư vị là những danh hiệu được nhiều người biết đến. Ngoài ra tùy theo tôn giáo mà các đấng quyền năng được gọi bằng nhiều tên khác nhau, cho dù không kể ra chắc hẳn quí vị cũng đã biết.</p>
+<h3 id="6-vậy-gia-đình-công-giáo-xem-địa-lý-tl-có-thích-hợp-hay-không">6. Vậy gia đình Công Giáo xem Địa Lý TL có thích hợp hay không?</h3>
+<p>Đứng trên quan điểm của nhà làm địa lý thì bất cứ người thuộc tôn giáo nào cũng có thể đến với môn Địa lý thần linh. Những trợ giúp của môn này không hề nhằm mục đích cải đổi tôn giáo của người khác. Trái lại môn này còn giúp cho người thọ nhận chứng nghiệm sự hiện hữu của thế giới tâm linh để từ đó củng cố đức tin trong tôn giáo của mình. Đây là một bộ môn chứ không phải là tôn giáo hay tông phái. Những nghi thức của bộ môn không hề đòi hỏi quí vị phải niệm danh hiệu của một giáo chủ nào, do đó nếu có cầu nguyện thì quí vị có thể thoải mái hướng về đấng mình hằng thờ phượng trước nay, thần linh được nhắc tới trong bộ môn cũng là đấng mà quí vị tôn thờ. Tuy nhiên, xin quí vị nên tham khảo ý kiến của vị tu sĩ hướng dẫn tâm linh trong tôn giáo của mình trước khi đến với khoa ĐLTL.</p>
+<h3 id="7-khoa-địa-lý-thần-linh-có-xem-mồ-mả-như-khoa-phong-thủy-hay-không">7. Khoa Địa lý Thần Linh có xem mồ mả như khoa Phong thủy hay không?</h3>
+<p>Khoa ĐLTL không cho rằng việc cải táng mồ mả có liên hệ đến thịnh suy của những thế hệ<br />
+tiếp nối. Nếu như việc này có tầm mức quan trọng như vậy thì những phong tục hỏa táng, thủy táng hay thậm chí đến điểu táng sẽ mang lại ảnh hưởng ra sao cho con cháu trong gia tộc? Tuy nhiên, chúng tôi rất khuyến khích việc chăm sóc mộ phần vì việc này biểu lộ tình thương của người còn lại với người thân đã mất. Hơn nữa, mồ mả của ông bà còn là dấu tích nhắc nhở những thế hệ sau biết được cội nguồn của mình mà siết chặt mối liên hệ huyết thống với nhau hơn. Chính vì mộ phần có một giá trị tinh thần không nhỏ cho nên khi làm địa lý, chúng tôi cũng có thể cảm nhận được tình trạng mồ mả trong gia tộc của thân chủ để nhắc nhở họ chăm sóc. Phải chăng vì giá trị này mà môn phong thủy đã chú trọng đến việc cải táng hài cốt tổ tiên vào nơi đất kết?</p>
+<h3 id="8-nếu-đã-xem-địa-lý-phong-thủy-rồi-có-thể-xem-thêm-địa-lý-thần-linh-được-không">8. Nếu đã xem địa lý phong thủy rồi có thể xem thêm địa lý thần linh được không?</h3>
+<p>Khoa Phong thủy chủ trương sự thành đạt của con người cần hội đủ ba yếu tố là Thiên thời, Địa lợi và Nhân hòa. Theo đó thì yếu tố &ldquo;địa lợi&rdquo; vốn là sở trường của khoa này, có thể chọn phương vị, sắp xếp vật thể để kiến trúc có được địa khí hưng vượng, giúp cho người cư ngụ nơi đó được phát đạt. Nhân hòa là sức phấn đấu của con người, điều này có thể thực hiện được nếu cố gắng. Duy có &ldquo;Thiên thờì&rdquo; tức là mệnh trời là nằm ngoài ngoài khả năng thay đổi của con người. Đối với môn ĐLTL thì &ldquo;Thiên thời&rdquo; là thời cơ, là cơ hội do thần thánh mang đến. Thiếu sự trợ giúp của cõi trời thì cho dù tài giỏi đến mấy cũng không có đất dụng võ như<br />
+thiên hạ thường nói &ldquo;tài bất thắng thời&rdquo;. Bộ môn đặt trọng tâm vào sự hộ độ của thần thánh trong đó có những nghi thức giúp con người cảm nhận được sự hiện hữu của cõi vô hình một cách rõ ràng. Môn ĐLTL chú trọng đến hiện tượng siêu hình, cho nên không thay đổi những gì mà khoa phong thủy đã sắp xếp. Trong chiều hướng này thì không trở ngại khi quí vị đến với khoa ĐLTL trước hoặc sau khi quí vị xem Phong Thủy.</p>
+<h3 id="9-đánh-bài-thua-có-xem-dlthần-linh-được-không-xin-trúng-số-được-không">9. Đánh bài thua có xem DLThần Linh được không? Xin trúng số được không?</h3>
+<p>Không thể được.<br />
+DLThần Linh chỉ có thể giúp được may mắn hưởng trọn tài năng của mình. Khi có tài mà thiếu đức thì sẽ được hướng dẫn hầu có đức độ để quí vị được hưởng theo tài năng của mình. Có tài, có khả năng mà thiếu cơ hội, thành tâm cầu nguyện thì Thần Linh sẽ ủng hộ. Ví dụ: không biết sửa xe mà mở tiệm sửa xe thì làm sao thần linh ủng hộ được?</p>
+<h3 id="10-đạo-công-giáo-không-thờ-thổ-thần-thổ-địa-vậy-khi-xem-đltl-thì-tôi-sẽ-cầu-với-ai">10. Đạo Công Giáo không thờ Thổ Thần Thổ Địa vậy khi xem ĐLTL thì tôi sẽ cầu với ai?</h3>
+<p>Người theo Đạo Công Giáo cầu nguyện với Đức Chúa Thánh Thần, Chúa Giêsu hay Đức Mẹ, không nhất thiết phải cầu với Thần Tài Thổ Địa.</p>
+<h3 id="11-những-bùa-trấn-ếm-hình-bát-quái-của-những-thầy-địa-lý-trước-xem-dl-thần-linh-có-bị-ảnh-hưởng-gì-không-có-chõi-nhau-không">11. Những bùa trấn ếm, hình bát quái của những thầy địa lý trước, xem DL Thần Linh có bị ảnh hưởng gì không? Có chõi nhau không?</h3>
+<p>Những hình thức đó không cần thiết. Để an tâm, nhà địa lý sẽ giúp thâu lại những món đó và nhận trách nhiệm về hành động này trước thần linh. Phương pháp của chúng tôi giúp trực tiếp chứng nghiệm những nơi nào có xạ tuyến xấu tốt còn gọi là hãm địa, phương pháp này cũng sẽ cho kiểm nghiệm được những món đó có linh ứng hay không?</p>
+<h3 id="12-chứng-nghiệm-là-sao">12. Chứng nghiệm là sao?</h3>
+<p>Khi chứng nghiệm sẽ cảm thấy như thế nào? Bằng phương pháp bí truyền, chúng tôi dùng những phương tiện Ấn, Chú và Linh Phù Chiêu cảm thần lực từ thần linh, giúp những người trong gia đình được nhạy cảm tức khắc để cảm nhận được sự hiện diện cõi vô hình. trong lúc hoàn toàn tỉnh táo. Đây là một hiện tượng ngoài phạm vi giải thích của khoa học.</p>
+<h3 id="13-tại-sao-đến-bây-giờ-mới-xuất-hiện-môn-đl-thần-linh">13. Tại sao đến bây giờ mới xuất hiện môn ĐL Thần Linh?</h3>
+<p>Như đã trình bày, môn Địa Lý Thần Linh đã có gần hai mươi năm nhưng vì Hội Tâm Linh Học không chủ trương quảng bá rộng rãi nên ít được biết đến. Trước kia Hội chỉ nhận xem Địa lý cho những thân hữu đã từng sinh hoạt với Hội, hoặc những người do họ giới thiệu. Số khách được chọn lọc vì bộ môn hãy còn nhiều nghi thức nặng về huyền bí không phải với ai cũng thích hợp. Hơn nữa cũng cần phải có thời gian để kiểm nghiệm hiệu quả và đồng thời cải tiến phương pháp thực hành để môn này có thể dễ dàng đến với mọi giới. Trong chiều hướng này, Hội lần lượt thay thế những hình thức rườm rà đầy mê tín, dị đoan hoặc lệ thuộc tôn giáo để mọi người không phân biệt tín ngưỡng đều có thể tham dự. Tuy đơn giản hóa nhưng khoa ĐLTL không hề bị mất uy lực, trái lại còn tạo được nhiều thành quả ngoài sự mong ước. Đến nay thì mọi sự đã được hoàn chỉnh cho nên chúng tôi hân hoan giới thiệu Địa Lý Thần Linh, một bộ môn tin chắc sẽ mang nhiều phúc lợi vật chất lẫn tâm linh cho người hữu duyên.</p>
+<h3 id="14-môn-dltl-có-từ-khi-nào-và-phát-xuất-từ-đâu-phải-có-điều-kiện-gì-mới-học-được-môn-này">14. Môn DLTL có từ khi nào và phát xuất từ đâu? Phải có điều kiện gì mới học được môn này?</h3>
+<p>Từ lâu có người đã biết làm địa lý nhà cửa hay cơ sở buôn bán, bằng cách kêu gọi sự giúp đỡ của các đẳng cấp trong cõi vô hình bằng nhiều cách khác nhau như: bằng lễ vật qua hình thức cúng kiến, ví dụ cúng thổ trạch, đất đai cho gia đạo bình an, cúng cô hồn để cơ sở làm ăn không bị quấy phá; bằng cách thờ phượng như thờ thần tài, thổ địa để được đông đảo khách hàng, thờ Quan thánh để tránh sự quấy nhiễu của tà ma …hay bằng những vật linh thiêng để trấn ếm như kính bát quái, linh phù chẳng hạn. Ngoài ra cũng có những nghi thức dùng lửa để trừ khử âm khí như đốt phông long, đốt nền đất trước khi xây móng nhà. Hội Tâm Linh Học đã nghiên cứu rất nhiều nghi thức dân gian nói trên, kể cả những nghi thức mật truyền dùng để thông đạt với thần linh, lể lập thành môn ĐLTL. Trong một thời gian dài gần 20 năm, bộ môn luôn luôn được cải tiến để có thể phục vụ cho mọi người, mọi giới, không phân biệt tín ngưỡng. Đến nay thì bộ môn đã hoàn chỉnh và sẵn sàng đến với mọi người.</p>
+<h3 id="15-nếu-muốn-học-môn-này-thì-cần-điều-kiện-gì-và-tìm-sách-vở--tài-liệu-ở-đâu">15. Nếu muốn học môn này thì cần điều kiện gì và tìm sách vở , tài liệu ở đâu?</h3>
+<p>ĐLTL là một môn bí truyền, còn được gọi là mật truyền, cho nên chỉ được lưu hành theo lối truyền khẩu. Hành giả của môn Địa lý không cần phải có căn cơ hay năng khiếu đặc biệt và Ban ĐLTL trong thời gian qua cũng đã đào tạo một số chuyên gia hiện đang hoạt động phục vụ cho bá tánh khắp nơi. Nói tóm lại vì tính cách bí truyền nên bộ môn chỉ được hướng dẫn trong nội bộ của Hội Tâm Linh Học mà thôi.</p>
+<h3 id="16-nếu-người-phối-ngẫu-thường-bỏ-nhà-ra-đi-không-chăm-sóc-gia-đình-đl-thần-linh-có-giúp-đỡ-được-không">16. Nếu người phối ngẫu thường bỏ nhà ra đi, không chăm sóc gia đình, ĐL Thần Linh có giúp đỡ được không?</h3>
+<p>Như đã nói trước đây, chúng tôi chỉ nhận xem ĐL khi được chính chủ nhân căn nhà yêu cầu, và nếu là vợ<br />
+chồng thì cần có sự đồng ý của cả hai người. Chỉ cần thân chủ thuyết phục được người phối ngẫu của mình có mặt trong buổi xem Địa Lý thì xác suất đạt được kết quả mong muốn rất cao. Ngoài công việc làm tan biến những xạ tuyến xấu, giải trừ những nơi có âm khí giúp cho ngôi nhà trở nên một mái ấm, nhà làm địa lý còn hướng dẫn mọi người trong gia đình cảm nhận được sự hiện hữu của thần thánh chung quanh mình. Chứng nghiệm này sẽ giúp cho người phối ngẫu thức tỉnh mà trở về với bổn phận của gia đình.</p>
+<h3 id="17-địa-lý-thần-linh-lấy-thù-lao-bao-nhiêu">17. Địa lý thần linh lấy thù lao bao nhiêu?</h3>
+<p>Ban ĐLTL làm việc cho Hội Tâm Linh học, là một hội đoàn bất vụ lợi cho nên không đặt vấn đề giá cả cho bất cứ môn nào phục vụ bá tánh. Do đó thù lao tùy hỉ và chỉ nhận sau khi có kết quả như ý. Chính nhờ vậy mà khi đến với ban ĐLTL quí vị sẽ an tâm thoải mái, không sợ mất tiền mà kết quả không có. Hơn nữa tất cả chuyên gia trong Ban ĐLTL đều làm việc thiện nguyện, mọi đóng góp của quí khách sẽ được chuyển thẳng vào quỹ của Hội để sử dụng vào việc công ích chung.</p>
+<h3 id="18-địa-lý-thần-linh-khác-địa-lý-phong-thủy-như-thế-nào">18. Địa Lý Thần Linh khác Địa Lý Phong Thủy như thế nào?</h3>
+<p>Cả hai bộ môn ĐLTL và Phong thủy đều có cùng mục đích là mang lại vượng khí cho nhà cửa hoặc cơ sở để mọi người sanh sống trong đó được phát đạt trên nhiều phương diện. Duy có phương pháp thực hành là khác nhau.<br />
+Khoa Phong thủy chọn phương vị để xây cất, sắp xếp vật thể cho địa khí được hanh thông; trong khi đó thì môn ĐLTL chiêu cảm thần lực để hóa giải những nơi có xạ tuyến xấu, nặng nề âm khí của một kiến trúc. Khoa Phong thủy áp dụng những phương pháp do người xưa lập thành; trong khi đó thì môn ĐLTL đặt căn bản trên sự giúp đỡ của thần thánh bằng những nghi thức thông đạt của Chú, Ấn và Linh phù. Ngoài việc dùng Thần lực, còn được gọi là gia trì lực, để giải trừ những ảnh hưởng xấu trong nhà hay cơ sở, môn ĐLTL còn hướng dẫn thân chủ của mình đạt được sự chứng giám và hộ độ của các đấng vô hình.<br />
+Đặc biệt nhất là những người tham dự nếu muốn, sẽ được biến thành nhạy cảm trong chốc lát để cảm nhận những tầng rung động khác nhau do nơi có xạ tuyến xấu hoặc có phần âm phát ra. Chính điều này cho thấy Khoa ĐLTL tuy huyền bí nhưng rất thực tiễn, vì người thọ nhận có thể chứng nghiệm thay vì chỉ tin vào một mớ lý thuyết suông.</p>
+<h3 id="19-linh-phù-có-phải-là-bùa-không">19. Linh phù có phải là bùa không?</h3>
+<p>Đúng như vậy. Giới bình dân thì gọi là bùa còn các tông phái thì gọi là linh phù hay lá phép. Có nơi còn gọi là lá thiên thơ, gọi như vậy là đúng với ý nghĩa của một lá phép. Ngoài việc dùng linh phù để thông đạt với chư vị các cõi, người tu tập huyền bí còn dùng để quán chiếu trong khi công phu.</p>
+<h3 id="20-bộ-môn-đl-thần-linh-có-nằm-trong-trong-tông-phái-huyền-bí-nào-hay-không">20. Bộ Môn ĐL Thần Linh có nằm trong trong tông phái huyền bí nào hay không?</h3>
+<p>Như đã trả lời trước đó, ĐLTL do Hội Tâm Linh Học nghiên cứu và lập thành, không liên hệ đến bất cứ tông phái nào. Phần thực hành gồm một số phương tiện giống với các nghi thức của những tông phái huyền bí như Ấn, Chú và Linh phù chẳng hạn. Tuy nhiên, Ấn, Chú và linh phù là những quy ước dùng để thông đạt với thần thánh đã có từ ngàn xưa và phát xuất từ cõi vô hình nên không thuộc sở hữu của một tông phái hay tôn giáo.</p>
+<h3 id="21-quí-vị-chứng-minh-có-thần-linh-bằng-cách-nào">21. Quí vị chứng minh có Thần Linh bằng cách nào?</h3>
+<p>Chúng tôi chứng minh có Thần linh bằng một nghi thức được gọi là phép &ldquo;Chiêu cảm thần lực&rdquo;. Phép này nhằm xin Ơn Trên ban thần lực (còn được gọi là gia trì lực) giúp con người trong khoảnh khắc trở nên nhạy cảm hơn để tiếp nhận những hiện tượng siêu hình vượt ngoài giác quan bình thường của con người. Thật vậy, trong suốt thời gian xem Địa lý, chúng tôi có nhiều dịp để cho gia chủ cũng như người trong nhà, nếu muốn, có thể cảm giác được những tầng rung động tại những nơi thấy có ảnh hưởng không tốt cho kiến trúc. Ngoài ra khi làm những nghi lễ để thỉnh phép, họ còn chứng nghiệm sự hiện diện của chư vị qua cảm giác của thân thể. Trong một vài trường hợp đặc biệt có người còn thấy được linh ảnh của các đấng trong lúc hoàn toàn tỉnh táo.</p>
+<h3 id="22-làm-sao-biết-được-đó-là-thần-linh-hay-một-tà-lực-nào-khác-khi-chứng-nghiệm">22. Làm sao biết được đó là thần linh hay một tà lực nào khác khi chứng nghiệm?</h3>
+<p>Khi chúng ta hướng về một đấng linh thiêng thì những gì chúng ta cảm nhận được chắc chắn cũng phải đến từ vị đó thì mới hợp lý. Hơn nữa, ĐLTL không hề đòi hỏi thân chủ cầu nguyện với một thần linh nào riêng biệt, mà chỉ giúp họ thông đạt với đấng mà họ vẫn hằng thờ phượng.</p>
+<ul>
+<li>Hội Tâm Linh Học -</li>
+</ul>
+
+  </article>
+</div>
+      
+<div class="grow"></div>
+<nav class="pagination-single">
+  
+    
+      <a href="https://i22.be/nghiencuuhuyenbi/" title="Bài 11: Tại sao nghiên cứu huyền bí" class="pagination-single__left">
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </div>
+        <div class="pagination-single__right-title">Bài 11: Tại sao nghiên cứu huyền bí</div>
+      </a>
+    
+    <div class="grow"></div>
+    
+      <a href="https://i22.be/tauhoanhapma/" title="Bài 13: Tẩu hoả nhập ma" class="pagination-single__right">
+        <div class="pagination-single__left-title">Bài 13: Tẩu hoả nhập ma</div>
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </div>
+      </a>
+    
+  
+</nav>
+
+
+      
+    </article>
+    
+    <section id="list-side" class="r" data-dir="ltr">
+      
+        <div class="toc">
+  <h6 class="toc__label">What&#39;s on this Page</h6>
+  <div class="toc__body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#địa-lý-thần-linh-là-gì">Địa lý thần linh là gì</a></li>
+    <li><a href="#hỏi-đáp-địa-lý-thần-linh">Hỏi Đáp Địa Lý Thần Linh</a>
+      <ul>
+        <li><a href="#1-phải-có-điều-kiện-gì-để-được-xem-đltl">1. Phải có điều kiện gì để được xem ĐLTL?</a></li>
+        <li><a href="#2-xin-giải-thích-thêm-về-xạ-tuyến-xấu-và-xạ-tuyến-tốt-nghĩa-là-gì">2. Xin giải thích thêm về xạ tuyến xấu và xạ tuyến tốt, nghĩa là gì?</a></li>
+        <li><a href="#3-xin-cho-biết-nếu-có-người-có-cơ-sở-làm-ăn-thua-lỗ-có-giúp-được-không">3. Xin cho biết, nếu có người có cơ sở làm ăn thua lỗ, có giúp được không?</a></li>
+        <li><a href="#4-mục-đích-của-đltl-là-gì">4. Mục đích của ĐLTL là gì?</a></li>
+        <li><a href="#5-gọi-là-địa-lý-thần-linh-vậy-thần-linh-đó-là-ai">5. Gọi là Địa Lý Thần Linh, vậy thần linh đó là ai?</a></li>
+        <li><a href="#6-vậy-gia-đình-công-giáo-xem-địa-lý-tl-có-thích-hợp-hay-không">6. Vậy gia đình Công Giáo xem Địa Lý TL có thích hợp hay không?</a></li>
+        <li><a href="#7-khoa-địa-lý-thần-linh-có-xem-mồ-mả-như-khoa-phong-thủy-hay-không">7. Khoa Địa lý Thần Linh có xem mồ mả như khoa Phong thủy hay không?</a></li>
+        <li><a href="#8-nếu-đã-xem-địa-lý-phong-thủy-rồi-có-thể-xem-thêm-địa-lý-thần-linh-được-không">8. Nếu đã xem địa lý phong thủy rồi có thể xem thêm địa lý thần linh được không?</a></li>
+        <li><a href="#9-đánh-bài-thua-có-xem-dlthần-linh-được-không-xin-trúng-số-được-không">9. Đánh bài thua có xem DLThần Linh được không? Xin trúng số được không?</a></li>
+        <li><a href="#10-đạo-công-giáo-không-thờ-thổ-thần-thổ-địa-vậy-khi-xem-đltl-thì-tôi-sẽ-cầu-với-ai">10. Đạo Công Giáo không thờ Thổ Thần Thổ Địa vậy khi xem ĐLTL thì tôi sẽ cầu với ai?</a></li>
+        <li><a href="#11-những-bùa-trấn-ếm-hình-bát-quái-của-những-thầy-địa-lý-trước-xem-dl-thần-linh-có-bị-ảnh-hưởng-gì-không-có-chõi-nhau-không">11. Những bùa trấn ếm, hình bát quái của những thầy địa lý trước, xem DL Thần Linh có bị ảnh hưởng gì không? Có chõi nhau không?</a></li>
+        <li><a href="#12-chứng-nghiệm-là-sao">12. Chứng nghiệm là sao?</a></li>
+        <li><a href="#13-tại-sao-đến-bây-giờ-mới-xuất-hiện-môn-đl-thần-linh">13. Tại sao đến bây giờ mới xuất hiện môn ĐL Thần Linh?</a></li>
+        <li><a href="#14-môn-dltl-có-từ-khi-nào-và-phát-xuất-từ-đâu-phải-có-điều-kiện-gì-mới-học-được-môn-này">14. Môn DLTL có từ khi nào và phát xuất từ đâu? Phải có điều kiện gì mới học được môn này?</a></li>
+        <li><a href="#15-nếu-muốn-học-môn-này-thì-cần-điều-kiện-gì-và-tìm-sách-vở--tài-liệu-ở-đâu">15. Nếu muốn học môn này thì cần điều kiện gì và tìm sách vở , tài liệu ở đâu?</a></li>
+        <li><a href="#16-nếu-người-phối-ngẫu-thường-bỏ-nhà-ra-đi-không-chăm-sóc-gia-đình-đl-thần-linh-có-giúp-đỡ-được-không">16. Nếu người phối ngẫu thường bỏ nhà ra đi, không chăm sóc gia đình, ĐL Thần Linh có giúp đỡ được không?</a></li>
+        <li><a href="#17-địa-lý-thần-linh-lấy-thù-lao-bao-nhiêu">17. Địa lý thần linh lấy thù lao bao nhiêu?</a></li>
+        <li><a href="#18-địa-lý-thần-linh-khác-địa-lý-phong-thủy-như-thế-nào">18. Địa Lý Thần Linh khác Địa Lý Phong Thủy như thế nào?</a></li>
+        <li><a href="#19-linh-phù-có-phải-là-bùa-không">19. Linh phù có phải là bùa không?</a></li>
+        <li><a href="#20-bộ-môn-đl-thần-linh-có-nằm-trong-trong-tông-phái-huyền-bí-nào-hay-không">20. Bộ Môn ĐL Thần Linh có nằm trong trong tông phái huyền bí nào hay không?</a></li>
+        <li><a href="#21-quí-vị-chứng-minh-có-thần-linh-bằng-cách-nào">21. Quí vị chứng minh có Thần Linh bằng cách nào?</a></li>
+        <li><a href="#22-làm-sao-biết-được-đó-là-thần-linh-hay-một-tà-lực-nào-khác-khi-chứng-nghiệm">22. Làm sao biết được đó là thần linh hay một tà lực nào khác khi chứng nghiệm?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+      
+    </section>
+
+  </div>
+</div>
+
+<script>
+  'use strict';
+  
+  function wrap(el, wrapper) {
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+
+  (function () {
+    var singleContentsElem = document.querySelector('.single__contents');
+    singleContentsElem ? 
+    singleContentsElem.querySelectorAll('pre > code').forEach(function(elem) {
+      var dataLang = elem.getAttribute('data-lang');
+      var dataLangWrapper = document.createElement('div');
+      var code = null;
+      var codeTitle = null;
+
+      if (dataLang && dataLang.includes(':')) {
+        code = dataLang.split(':')[0];
+        codeTitle = dataLang.split(':')[1];
+
+        dataLangWrapper.className = 'language-' + code;
+        dataLangWrapper.setAttribute('data-lang', codeTitle);
+
+        elem.className = 'language-' + code;
+        elem.setAttribute('data-lang', codeTitle);
+        elem.setAttribute('id', codeTitle);
+      }
+
+      if (!dataLang || codeTitle) {
+        wrap(elem.parentNode, dataLangWrapper);
+      }
+
+    }) : null;
+  })();
+  
+
+
+  
+  
+  var dollarCodeElem = document.querySelectorAll('div.language-\\$');
+  var gtCodeElem = document.querySelectorAll('div.language-\\>');
+  
+  dollarCodeElem ?
+  dollarCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '$<br/>';
+    }) : null;
+  }) : null;
+
+  gtCodeElem ?
+  gtCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '><br/>';
+    }) : null;
+  }) : null;
+  
+</script>
+
+
+
+
+<script defer src="/js-om/helper/getParents.min.js"></script>
+
+<script defer src="/js-om/helper/closest.min.js"></script>
+
+<script defer src="/js-om/helper/prev.min.js"></script>
+
+<script defer src="/js-om/helper/prop.min.js"></script>
+
+<script defer src="/js-om/helper/fadeinout.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    
+    
+    var tables = document.querySelectorAll('.single__contents > table');
+    for (let i = 0; i < tables.length; i++) {
+      var table = tables[i];
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentElement.replaceChild(wrapper, table);
+      wrapper.appendChild(table);
+    }
+    
+
+
+    
+    
+    
+    var lib = JSON.parse("null");
+
+    if (lib && lib.includes('mermaid')) {
+      var themeVariant = localStorage.getItem('theme') || 'light';
+
+      if (themeVariant === "dark") {
+        mermaid.initialize({ theme: 'dark' });
+      } else {
+        mermaid.initialize({ theme: 'default' });
+      }
+      
+      var mermaids = [];
+      [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
+      mermaids.forEach(function(elem) {
+        var elemParentNode = elem.parentNode;
+
+        if (elemParentNode !== document.body) {
+          elemParentNode.parentNode.insertBefore(elem, elemParentNode);
+          elemParentNode.parentNode.removeChild(elemParentNode);
+        }
+
+        var newElemWrapper = document.createElement('div');
+        newElemWrapper.classList.add('mermaid');
+        newElemWrapper.innerHTML = elem.innerHTML;
+        elem.replaceWith(newElemWrapper);
+      });
+    }
+    
+    
+
+    
+    if (lib && lib.includes('katex')) {
+      var mathElements = document.getElementsByClassName('math');
+      var options = {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ],
+      };
+
+      renderMathInElement(document.querySelector('.single__contents'), options);
+    }
+    
+
+
+    
+    if (lib && lib.includes('flowchartjs')) {
+      
+      var options = JSON.parse("{\"arrow-end\":\"block\",\"element-color\":\"black\",\"fill\":\"white\",\"flowstate\":{\"approved\":{\"fill\":\"#58C4A3\",\"font-size\":12,\"no-text\":\"n/a\",\"yes-text\":\"APPROVED\"},\"current\":{\"fill\":\"yellow\",\"font-color\":\"red\",\"font-weight\":\"bold\"},\"future\":{\"fill\":\"#FFFF99\"},\"invalid\":{\"fill\":\"#444444\"},\"past\":{\"fill\":\"#CCCCCC\",\"font-size\":12},\"rejected\":{\"fill\":\"#C45879\",\"font-size\":12,\"no-text\":\"REJECTED\",\"yes-text\":\"n/a\"},\"request\":{\"fill\":\"blue\"}},\"font-color\":\"black\",\"font-size\":14,\"line-color\":\"black\",\"line-length\":50,\"line-width\":3,\"no-text\":\"no\",\"scale\":1,\"symbols\":{\"end\":{\"class\":\"end-element\"},\"start\":{\"element-color\":\"green\",\"fill\":\"yellow\",\"font-color\":\"red\"}},\"text-margin\":10,\"x\":0,\"y\":0,\"yes-text\":\"yes\"}");
+      var jsonContent = null;
+
+      var flowchartPrefix = "language-flowchart";
+      var index = 0;
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + flowchartPrefix + "]"), function(x){
+          x.style.display = 'none'
+          x.parentNode.style.backgroundColor = "transparent"
+          jsonContent = x.innerText;
+
+          var node0 = document.createElement('div');
+          node0.id = 'flowchart' + index;
+          x.parentNode.insertBefore(node0, x);
+
+          var diagram = flowchart.parse(jsonContent);
+          diagram.drawSVG("flowchart"+index, options);
+
+          index +=1;
+      });      
+    }
+    
+
+
+    
+    if (lib && lib.includes('chart')) {
+      var borderColor = "#666";
+      var bgColor = "#ddd";
+      var borderWidth = 2;
+
+      Chart.defaults.global.elements.rectangle.borderWidth = borderWidth;
+      Chart.defaults.global.elements.rectangle.borderColor = borderColor;
+      Chart.defaults.global.elements.rectangle.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.line.borderWidth = borderWidth;
+      Chart.defaults.global.elements.line.borderColor = borderColor;
+      Chart.defaults.global.elements.line.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.point.borderWidth = borderWidth;
+      Chart.defaults.global.elements.point.borderColor = borderColor;
+      Chart.defaults.global.elements.point.backgroundColor = bgColor;
+
+      var chartPrefix = "language-chart";
+      var index = 0;
+      var jsonContent = null;
+
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + chartPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        jsonContent = x.innerText;
+        var node0 = document.createElement('canvas');
+        var source = null;
+        node0.height = 200;
+        node0.style.height = 200;
+        node0.id = 'myChart' + index;
+        source = JSON.parse(jsonContent);
+        x.parentNode.insertBefore(node0, x);
+        var ctx = document.getElementById('myChart' + index).getContext('2d');
+        var myChart = new Chart(ctx, source);
+        index += 1;
+      });            
+    }
+    
+
+
+    
+    if (lib && lib.includes('viz')) {
+      var vizPrefix = "language-viz-";
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + vizPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        var engine;
+        x.getAttribute("class").split(" ").forEach(function (cls) {
+          if (cls.startsWith(vizPrefix)) {
+            engine = cls.substr(vizPrefix.length);
+          }
+        });
+        var viz = new Viz();
+        viz.renderSVGElement(x.innerText, { engine: engine })
+          .then(function (element) {
+            element.style.width = "100%";
+            x.parentNode.insertBefore(element, x);
+          })
+      });
+    }
+    
+    
+  });
+</script>
+
+<script>
+  var listSide = document.getElementById('list-side');
+  var listMain = document.getElementById('list-main');
+  var singleMenu = document.getElementById('single-menu');
+  var switchElem = document.querySelector('.switch');
+  var wideViewAsDefault = JSON.parse("null");
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';  
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listSide.className = 'r';
+        listMain.className = 'm';
+        singleMenu.className = 'l';
+      }
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      singleMenu.className = 'l';
+      listMain.className = 'mr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+      switchElem.className = 'switch';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      listSide.className = 'hide';
+      listMain.className = 'lmr';
+      singleMenu.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      listSide.className = 'hide';
+      listMain.className = 'mr';
+      singleMenu.className = 'l';
+      switchElem.className = 'hide';
+    },
+  });
+</script>
+
+        
+    </div>
+
+</body>
+
+</html>
